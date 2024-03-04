@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01_data_generation.html" rel="next">
+<link href="./scripts/01_data_generation.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -91,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">A simple complete case analysis example</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/janickweberpals/cc_bias_simulation" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/janickweberpals/bias_simulation_missing_data" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -124,13 +158,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_data_generation.html" class="sidebar-item-text sidebar-link">
+  <a href="./scripts/01_data_generation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data generation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_missingness_generation.html" class="sidebar-item-text sidebar-link">
+  <a href="./scripts/02_missingness_generation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Missingness generation</span></span></a>
   </div>
 </li>
@@ -147,13 +181,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_run_simulation.html" class="sidebar-item-text sidebar-link">
+  <a href="./scripts/03_run_simulation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Simulation script</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_simulation_results.html" class="sidebar-item-text sidebar-link">
+  <a href="./scripts/04_simulation_results.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Simulation results</span></span></a>
   </div>
 </li>
@@ -169,10 +203,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a>
+  <ul class="collapse">
   <li><a href="#objective" id="toc-objective" class="nav-link" data-scroll-target="#objective">Objective</a></li>
+  <li><a href="#sec-dependencies" id="toc-sec-dependencies" class="nav-link" data-scroll-target="#sec-dependencies">Dependencies</a></li>
+  <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">Reproducibility</a></li>
+  <li><a href="#repository-structure-and-files" id="toc-repository-structure-and-files" class="nav-link" data-scroll-target="#repository-structure-and-files">Repository structure and files</a>
+  <ul class="collapse">
+  <li><a href="#directory-overview" id="toc-directory-overview" class="nav-link" data-scroll-target="#directory-overview">Directory overview</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/janickweberpals/cc_bias_simulation/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/janickweberpals/bias_simulation_missing_data/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
@@ -202,12 +244,129 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="description" class="level1 unnumbered">
 <h1 class="unnumbered">Description</h1>
+<section id="objective" class="level2">
+<h2 class="anchored" data-anchor-id="objective">Objective</h2>
+<p>The objective of this repository is to flexibly simulate de novo datasets with different missingness scenarios. The simulated datasets approximate the distributions of the empirical cohort used in the <a href="https://gitlab-scm.partners.org/drugepi/hd-mi"><code>HDMI</code> project</a>.</p>
 </section>
-<section id="objective" class="level1">
-<h1>Objective</h1>
-<p>The objective of this repository is to simulate a dataset with few very simple missingness scenarios and evaluate bias based on (a) on which covariates are involved in the missingness generating mechanism and (b) the strength of association between covariates.</p>
+<section id="sec-dependencies" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-dependencies">Dependencies</h2>
+<p>This is a quarto project and R package dependencies are managed through the <code>renv</code> package. All packages and their versions can be viewed in the lockfile <code>renv.lock</code>. All required packages and the appropriate versions can be installed by running the following command:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The dependencies are managed through Posit’s repository package manager (RSPM) version for your underlying OS distribution. If you use a different operating system than MacOS, please head over to the RSPM setup website and follow these steps:</p>
+<ol type="1">
+<li><p>Go to the <a href="https://packagemanager.posit.co/client/#/repos/cran/setup?distribution=redhat-9">RSPM setup website</a></p></li>
+<li><p>Choose the operating system (if Linux, also choose the Linux distribution)</p></li>
+<li><p>Go to <strong><code>Repository URL:</code></strong> and copy-paste the URL to the options statement in the <code>.Rprofile</code> file</p>
+<p><em>options(repos = c(REPO_NAME = “URL”))</em></p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="reproducibility" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="reproducibility">Reproducibility</h2>
+<p>Follow these steps in RStudio to reproduce this study:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Install all necessary dependencies (see above)</li>
+<li>Add/adapt the paths to the datasets in <code>.Renviron</code></li>
+<li>In RStudio, run all scripts via <code>quarto render</code> or <code>Build &gt; Render Book</code> (make sure quarto is installed)</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="repository-structure-and-files" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="repository-structure-and-files">Repository structure and files</h2>
+<section id="directory-overview" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="directory-overview">Directory overview</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>.
+├── _quarto.yml
+├── cc_bias_simulation.Rproj
+├── data
+│   └── simulation_results.parquet
+├── docs
+│   ├── index.html
+│   ├── robots.txt
+│   ├── scripts
+│   ├── search.json
+│   ├── site_libs
+│   └── sitemap.xml
+├── functions
+│   ├── format_methods.R
+│   ├── generate_NA_cont.R
+│   ├── generate_NA_discrete.R
+│   ├── generate_data.R
+│   ├── ps_analysis_mids.R
+│   ├── rsimsum_ggplot.R
+│   └── run_simulation.R
+├── index.qmd
+├── index.rmarkdown
+├── renv
+│   ├── activate.R
+│   ├── library
+│   ├── settings.json
+│   └── staging
+├── renv.lock
+├── scripts
+│   ├── 01_data_generation.qmd
+│   ├── 02_missingness_generation.qmd
+│   ├── 03_run_simulation.qmd
+│   ├── 04_simulation_results.md
+│   ├── 04_simulation_results.qmd
+│   └── 04_simulation_results_files
+├── site_libs
+│   ├── bootstrap
+│   ├── clipboard
+│   ├── crosstalk-1.2.1
+│   ├── htmlwidgets-1.6.4
+│   ├── jquery-3.5.1
+│   ├── plotly-binding-4.10.4
+│   ├── plotly-htmlwidgets-css-2.11.1
+│   ├── plotly-main-2.11.1
+│   ├── quarto-html
+│   ├── quarto-nav
+│   ├── quarto-search
+│   └── typedarray-0.1
+└── update_README.R</code></pre>
+</div>
+</div>
+<ul>
+<li>.Rprofile - defines paths, activates <code>renv</code>, options for Posit R package manager</li>
+<li>scripts - main R/RMarkdown scripts</li>
+<li>functions - helper functions called in scripts</li>
+<li>renv/renv.lock - <code>renv</code> directories to manage R dependencies and versions used in this simulation</li>
+<li>docs - output of Quarto scripts</li>
+<li>README - essential information about the project (README.Rmd renders to README.md via update_README.R after each <code>quarto render</code> command)</li>
+</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -443,7 +602,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/janickweberpals\.github\.io\/bias_simulation_missing_data");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
@@ -464,7 +623,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_data_generation.html" class="pagination-link">
+      <a href="./scripts/01_data_generation.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data generation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

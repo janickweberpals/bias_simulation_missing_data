@@ -12,16 +12,17 @@ book:
         
     - part: Data generation background
       chapters:
-        - 01_data_generation.qmd
-        - 02_missingness_generation.qmd
+        - scripts/01_data_generation.qmd
+        - scripts/02_missingness_generation.qmd
 
     - part: Simulation
       chapters:
-        - 03_run_simulation.qmd
-        - 04_simulation_results.qmd
+        - scripts/03_run_simulation.qmd
+        - scripts/04_simulation_results.qmd
 
   reader-mode: true
-  repo-url: https://github.com/janickweberpals/cc_bias_simulation
+  repo-url: https://github.com/janickweberpals/bias_simulation_missing_data
+  site-url: https://janickweberpals.github.io/bias_simulation_missing_data
   repo-actions: [issue]
 
 format:

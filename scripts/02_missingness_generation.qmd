@@ -1,0 +1,308 @@
+---
+title: "Missingness generation"
+subtitle: "Details on how `mice::ampute` imposes missingness"
+author: "Janick Weberpals"
+date: "`r Sys.Date()`"
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(here)
+library(arrow)
+library(dplyr)
+library(survival)
+library(ggsurvfit)
+library(gt)
+library(gtsummary)
+library(ggthemes)
+library(gtools)
+library(mice)
+library(ggplot2)
+library(ggthemes)
+library(tictoc)
+
+n_total <- 2500
+
+tic()
+```
+
+## Objective
+
+In this section, we detail the process with which the `mice::ampute` function is used to impose missingness on one or multiple pre-specified variables. For this example, let...
+
+-   $X$ be a binary exposure
+-   $Y$ be a time-to-event outcome with the follow-up time until event or censoring (`eventtime`) and event indicator (`status`)
+-   $Z2$ be continuous confounder
+-   $U$ be a binary prognostic factor (associated with outcome but not exposure)
+
+We also simulate all other covariates of the **substantive model** with their approximate distributions as observed in the empirical claims-EHR linked dataset.
+
+```{r}
+source(here::here("functions", "generate_data.R"))
+
+cohort <- generate_data(
+  seed = 42, 
+  n_total = n_total
+  )
+
+#| label: tbl-tbl1
+#| tbl-cap: "Covariate distributions by exposure."
+
+cohort |> 
+  select(-c(eventtime, status)) |> 
+  tbl_summary(by = X) |> 
+  add_difference()
+```
+
+Let's further assume that we want to simulate missingness only in $Z2$. The corresponding missingness indicator for $Z2$ is denoted as $M_{Z2}$.
+
+<!-- This corresponds to an exemplary scenario where patients with a history of high $Z2$ values are more likely to have a missing `Z2`. -->
+
+Generally, the `mice::ampute` allows to simulate complex multivariate missingness patterns and mechanisms. For example, multiple different patterns with different underlying frequencies/prevalences and missingness mechanisms can be simulated. *Pattern* in this context if defined as a combination of missingness on specific variables while other variables remain complete. 
+
+For this example, we just consider a single missingness pattern for $M2$, for which, simply speaking, the probability for $M_{Z2}$ is imposed using the covariate values `Z2` and `U`. 
+
+$$Pr(M_{Z2}|Z2,U) = Z2 + U$$
+The detailed steps are illustrated in the following.
+
+## Step 1: Assigning a missingness pattern
+
+In a first step, we assign the missingness pattern. To that end, we create a vector with the length of the number of covariates that denotes which covariates should be become partially missing (denoted by a value of 0) and which should remain complete (denoted by a value of 1).
+
+```{r}
+#| label: tbl-pattern
+#| tbl-cap: "Assigned missingness pattern matrix."
+
+# define column numbers for pattern and weight determination
+col_Z2 <- which(colnames(cohort) %in% "Z2")
+col_U <- which(colnames(cohort) %in% "U")
+
+# define missingness pattern
+default_pattern <- rep(1, ncol(cohort))
+pattern <- replace(default_pattern, col_Z2, 0)
+
+tibble(
+  Variable = colnames(cohort),
+  Pattern = pattern
+  ) |> 
+  gt()
+```
+
+As you can see, only $Z2$ was assigned a value of 0, indicating that we will impose missing only on this covariate.
+
+## Step 2: Assigning weights
+
+For MAR and MNAR mechanisms, the probability of an individual $i$ to have an observed or missing $Z2$ is calculated using a **weighted sum score**. This calculation depends on the values of covariates which we define as predictors to impose missingness on $Z2$ as well as pre-specified weights which are manipulated by the user through a vector or matrix. To that end, predictors will be assigned a non-zero value which indicates the **weight** this variable receives. For example, if $Z2 = 2$ and $U = 1$, $Z2's$ influence would be twice as large as $U's$ influence. The scale here is relative, which means that $Z2 = 2$ and $U = 1$ would be the same as $Z2 = 0.2$ and $U = 0.8$.
+
+In this example, we assign weights of 0.2 and 0.8 to $Z2$ and $U$, respectively, which means that $U$ has a larger weight.
+
+```{r}
+#| label: tbl-weights
+#| tbl-cap: "Assigned missingness weights matrix."
+
+default_weights <- rep(0, ncol(cohort))
+
+# replace the predictor columns with a 1 or non-zero value
+weights <- replace(default_weights, c(col_Z2, col_U), c(0.2, 0.8))
+
+tibble(
+  Variable = colnames(cohort),
+  Weights = weights
+  ) |> 
+  gt()
+```
+
+## Step 3: Computing a (scaled) weighted sum score (wss)
+
+The way `mice::ampute` eventually computes the probability of an individual $i$ to have an observed or missing $Z2$ is [calculated using a weighted sum score](https://github.com/amices/mice/blob/master/R/ampute.R#L488).
+
+>`mice::ampute` documentation: A weighted sum score is simply the outcome of a linear regression equation where the coefficients are the values of the weights matrix. When data row i is a candidate for pattern k, the weighted sum score is therefore:
+\begin{equation*}
+wss_i = w_{k,1} \cdot y_{1,i} + w_{k,2} \cdot y_{2,i} + ... + w_{k,m} \cdot y_{m,i},
+\end{equation*}
+
+where ${y_{1,i},y_{2,i},...,y_{m,i}}$ is the set of variable values of case i and ${w_{k,1},w_{k,2},...,w_{k,m}}$ are the pre-specified weights on row k of the weights matrix. 
+
+In our example, m=2 and k∈{1} because there are two variable $Z2$ and $U$ with a single missing data pattern. 
+
+The weighted sum score is additionally [scaled](https://github.com/amices/mice/blob/master/R/ampute.R#L507) using the `scale` function.
+
+<!-- $$x_{\text{scaled}} = \sum{\frac{{x_i - \bar{x}}}{{\sqrt{\frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}}}}}$$ -->
+
+$$wss_{scaled} = \frac{wss - \bar{wss}}{sd_{wss}}$$
+
+## Step 4: Converting wss to probabilities
+
+### Option 1: Logistic probabilities based on continuous weighted sum score
+
+The scaled weighted sum scores are then eventually converted into actual probabilities for individual $i$ to have an observed or missing $Z2$. To that end, the `mice::ampute` function provides different  [logistic probability distributions](https://github.com/amices/mice/blob/master/R/ampute.continuous.R#L38):
+
+```{r}
+#| label: tbl-prob
+#| tbl-cap: "Logistic probability distributions to convert $wss$ to missingness probabilities."
+
+tibble(
+  Type = c(
+    "RIGHT",
+    "LEFT",
+    "MID",
+    "TAIL"),
+  Formula = c(
+    "$$\\text{logit}(-\\text{mean}(wss) + x + b)$$",
+    "$$\\text{logit}(\\text{mean}(wss) - wss + b)$$",
+    "$$\\text{logit}(-\\text{abs}(wss - \\text{mean}(wss)) + 0.75 + b)$$",
+    "$$\\text{logit}(\\text{abs}(wss - \\text{mean}(wss)) - 0.75 + b)$$"
+    )
+  ) |> 
+  gt() |> 
+  gt::tab_footnote(
+    footnote = "Note: b is a shift parameter that adjusts the probability curves to receive the desired proportion of missingness"
+    ) |> 
+  fmt_markdown()
+```
+
+
+```{r}
+#| label: fig-prob
+#| fig-cap: "Logistic probability distributions to convert $wss$ to missingness probabilities."
+
+# Define the probability distribution functions
+RIGHT <- function(x) exp(x) / (1 + exp(x))
+LEFT <- function(x, b) plogis(mean(x) - x + b)
+MID <- function(x, b) plogis(-abs(x - mean(x)) + 0.75 + b)
+TAIL <- function(x, b) plogis(abs(x - mean(x)) - 0.75 + b)
+
+# Create a sequence of x values
+x <- seq(-5, 5, length.out = 100)
+
+# Evaluate the functions at x
+right_values <- RIGHT(x)
+left_values <- LEFT(x, b = 0)
+mid_values <- MID(x, b = 0)
+tail_values <- TAIL(x, b = 0)
+
+# Create a data frame for ggplot
+df <- data.frame(
+  x = rep(x, 4),
+  y = c(right_values, left_values, mid_values, tail_values),
+  type = rep(c("RIGHT", "LEFT", "MID", "TAIL"), each = length(x))
+  )
+
+# Plot using ggplot
+ggplot(df, aes(x = x, y = y, color = type, linetype = type)) +
+  geom_line() +
+  labs(
+    x = "Weighted sum score (wss)", 
+    y = "Probability",
+    color = "Type",
+    linetype = "Type",
+    title = "Probability Distributions based on weighted sum score"
+    ) +
+  theme_bw() +
+  scale_color_colorblind() +
+  theme(legend.position = "top")
+```
+
+If we apply the `RIGHT` probability distribution type to our simulated data, the missingness probability looks like this.
+
+```{r}
+#| label: fig-prob_cohort
+#| fig-cap: "$RIGHT$ ogistic probability distributions to convert $wss$ to missingness probabilities. Here patients with higher $Z2$ values and those with $U$ present have higher $wss$ and are more likely to become missing."
+
+set.seed(42)
+data_miss <- mice::ampute(
+  data = cohort,
+  prop = 0.5,
+  mech = "MAR",
+  patterns = pattern,
+  weights = weights,
+  bycases = TRUE,
+  type = "RIGHT"
+  )
+
+wss <- cohort |> 
+  mutate(wss = unlist(data_miss$scores)) |> 
+  mutate(pr = RIGHT(wss))
+
+ggplot(wss, aes(x = wss, y = pr)) +
+  geom_line() +
+  #geom_point(aes(x = scale(Z2), y = pr), alpha = 0.1) +
+  labs(
+    x = "Standardized weighted sum score (wss)", 
+    y = "Probability"
+    ) +
+  theme_bw() +
+  scale_color_colorblind() +
+  theme(legend.position = "top")
+```
+
+
+### Option 2: Discrete probabilities based on continuous weighted sum score quantiles
+
+An alternative to using the different logistic probability distributions to map the weighted sum scores to a missingness probablity is to use **discrete probabilities** as described in [Brand (1999, pp. 110-113)](https://repub.eur.nl/pub/19790/990408_BRAND,%20Jacob%20Pieter%20Laurens.pdf). The weighted sum scores of all patients are divided over a certain number of equally sized groups, or quantiles. **An odds value defines the relative probability of each quantile group of becoming incomplete**. In the following example, the weighted sum scores are divided over 4 groups/quantile with the highest quantile having a four-fold odds of having a missing value for $Z2$.
+
+```{r}
+#| label: fig-odds
+#| fig-cap: "Imposed missingness based on scaled weighted sum score and corresponding quantile membership."
+
+# replace the predictor columns with a 1 or non-zero value
+odds <- c(1, 2, 3, 4)
+
+set.seed(42)
+data_miss <- mice::ampute(
+  data = cohort,
+  prop = 0.5,
+  mech = "MAR",
+  patterns = pattern,
+  weights = weights,
+  bycases = TRUE,
+  cont = FALSE,
+  odds = odds
+  )
+
+wss <- cohort |> 
+  mutate(wss = unlist(data_miss$scores)) |> 
+  mutate(quantile = ntile(x = wss, n = 4)) |> 
+  mutate(isNA = is.na(data_miss$amp$Z2))
+
+ggplot(wss, aes(x = wss, y = quantile, color = factor(isNA))) +
+  geom_point(alpha = 0.3) +
+  labs(
+    x = "Standardized weighted sum score (wss)", 
+    y = "Quantile",
+    color = "Is NA"
+    ) +
+  theme_bw() +
+  scale_color_colorblind() +
+  theme(legend.position = "top")
+```
+
+## Session info
+
+```{r, include=FALSE}
+runtime <- toc()
+```
+
+Script runtime: `r formatC((runtime$toc[[1]]-runtime$tic[[1]])/60, format = 'f', digits = 2)` minutes.
+
+::: panel-tabset
+### Loaded packages
+
+```{r}
+pander::pander(subset(data.frame(sessioninfo::package_info()), attached==TRUE, c(package, loadedversion)))
+```
+
+### Session info
+
+```{r}
+pander::pander(sessionInfo())
+```
+
+### Repositories
+
+```{r}
+pander::pander(options('repos'))
+```
+:::

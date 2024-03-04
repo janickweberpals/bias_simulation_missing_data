@@ -1,0 +1,168 @@
+---
+title: "Data generation"
+subtitle: "Minimal example dataset"
+author: "Janick Weberpals"
+date: "`r Sys.Date()`"
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tibble)
+library(simsurv)
+library(dplyr)
+library(survival)
+library(ggsurvfit)
+library(gtsummary)
+library(here)
+library(arrow)
+
+n_total <- 2500
+```
+
+# Objective
+
+The objective of this repository is to simulate a dataset with few missingness scenarios and evaluate bias for an unadjusted analysis, complete case analysis and analysis including imputed data after propensity score matching.
+
+The first step involves the generation of a complete dataset with realistic distributions and associations between covariates, which is showcased here.
+
+# Data generation
+
+-   The desired distributions as observed in the dataset.
+-   Desired overall sample size: `r n_total`
+
+## Generate data using `generate_data()` function
+
+We first create simulated data that approximates the covariate distributions in the observed empirical cohort.
+
+```{r}
+# data generating step
+source(here::here("functions", "generate_data.R"))
+
+cohort <- generate_data(
+  seed = 42, 
+  n_total = n_total
+  )
+
+cohort |> 
+  glimpse()
+```
+
+### Table 1 by exposure
+
+Display covariate distributions by exposure.
+
+```{r}
+#| label: tbl-tbl1
+#| tbl-cap: "Covariate distributions by exposure."
+
+cohort |> 
+  tbl_summary(by = X) |> 
+  add_difference()
+```
+
+### Odds ratios
+
+Odds rations for the strength of association between covariates and exposure.
+
+```{r}
+#| label: tbl-odds
+#| tbl-cap: "Odds rations for the strength of association between covariates and exposure."
+
+odds <- stats::glm(
+  formula = paste0("X ~ ", paste0(names(cohort |> select(-c(X, eventtime, status))), collapse = " + ")),
+  data = cohort,
+  family = "binomial"
+  )
+
+odds |> 
+  gtsummary::tbl_regression(exponentiate = T)
+```
+
+## Generate outcome
+
+Generate the outcome with a desired event rate of ~40 events/1,000 person-years of follow-up.
+
+```{r}
+# event-rate per 1000 person-years of follow-up
+# in original data: ~40 events per 1000 person-years
+event_rate_per_1000py <- round(sum(cohort$status)/sum(cohort$eventtime)*1000, 2)
+```
+
+-   Resulting/simulated event rate per 1,000 person-years: `r event_rate_per_1000py`
+
+## Survival
+
+```{r}
+#| label: fig-km
+#| fig-cap: "Kaplan-Meier plot (unadjusted) by exposure."
+
+km_exposure <- survfit2(formula = survival::Surv(eventtime, status) ~ X, data = cohort)
+
+ggsurvfit(
+  x = km_exposure, 
+  type = "survival",
+  linewidth = 1
+  ) +
+  add_confidence_interval() +
+  add_pvalue(caption = "Log-rank {p.value}")
+```
+
+Next, let's compute the univariate and multivariate beta coefficients (hazard ratios [HR]).
+
+-   Beta unadjusted:
+
+```{r}
+#| label: tbl-cox-univariate
+#| tbl-cap: "Univariate hazard ratio."
+
+cox_fit_unadjusted <- survival::coxph(formula = Surv(eventtime, status) ~ X, data = cohort)
+
+cox_fit_unadjusted |>  
+  gtsummary::tbl_regression(exponentiate = T)
+```
+
+-   Beta adjusted:
+
+```{r}
+#| label: tbl-cox-multivariate
+#| tbl-cap: "Multivariate hazard ratio."
+
+lhs <- "Surv(eventtime, status)"
+rhs <- paste0(colnames(cohort |> select(-c(eventtime, status))), collapse = " + ")
+cox_form <- as.formula(paste0(lhs, "~", rhs))
+
+cox_fit_adjusted <- survival::coxph(formula = cox_form, data = cohort)
+
+cox_fit_adjusted |>  
+  gtsummary::tbl_regression(exponentiate = T)
+```
+
+## Session info
+
+```{r, include=FALSE}
+runtime <- tictoc::toc()
+```
+
+Script runtime: `r formatC((runtime$toc[[1]]-runtime$tic[[1]])/60, format = 'f', digits = 2)` minutes.
+
+::: panel-tabset
+### Loaded packages
+
+```{r}
+pander::pander(subset(data.frame(sessioninfo::package_info()), attached==TRUE, c(package, loadedversion)))
+```
+
+### Session info
+
+```{r}
+pander::pander(sessionInfo())
+```
+
+### Repositories
+
+```{r}
+pander::pander(options('repos'))
+```
+:::
