@@ -1,7 +1,9 @@
 project:
   type: book
   output-dir: docs
-    
+  post-render: 
+    - update_README.R
+
 book:
   title: "A simple complete case analysis example"
   author: "Janick Weberpals"
