@@ -1,0 +1,6 @@
+# Description {.unnumbered}
+
+# Objective
+
+The objective of this repository is to simulate a dataset with few very simple missingness scenarios and evaluate bias based on (a)  on which covariates are involved in the missingness generating mechanism and (b) the strength of association between covariates.
+
