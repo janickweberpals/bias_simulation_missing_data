@@ -18,7 +18,7 @@ library(gtsummary)
 library(here)
 library(arrow)
 
-n_total <- 2500
+n_total <- 10000
 ```
 
 # Objective
