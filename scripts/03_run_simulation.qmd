@@ -46,7 +46,7 @@ pattern <- replace(default_pattern, col_Z2, 0)
 
 # define weights 
 default_weights <- rep(0, ncol(mock_cohort))
-weights <- replace(default_weights, c(col_Z2, col_U), c(0.8, 0.2))
+weights <- replace(default_weights, c(col_Z2, col_U), c(0.2, 0.8))
 
 prop <- 0.5
 ```
