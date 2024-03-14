@@ -5,7 +5,7 @@ project:
     - update_README.R
 
 book:
-  title: "A simple complete case analysis example"
+  title: "A simulation of bias introduced by missing confounder data"
   author: "Janick Weberpals"
     
   chapters:

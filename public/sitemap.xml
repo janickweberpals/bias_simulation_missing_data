@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://janickweberpals.github.io/bias_simulation_missing_data/index.html</loc>
-    <lastmod>2024-03-14T17:58:10.020Z</lastmod>
+    <loc>https://drugepi.gitlab-pages.partners.org/bias_simulation_missing_data/index.html</loc>
+    <lastmod>2024-03-14T19:25:43.977Z</lastmod>
   </url>
   <url>
-    <loc>https://janickweberpals.github.io/bias_simulation_missing_data/scripts/01_data_generation.html</loc>
-    <lastmod>2024-03-14T17:58:10.032Z</lastmod>
+    <loc>https://drugepi.gitlab-pages.partners.org/bias_simulation_missing_data/scripts/01_data_generation.html</loc>
+    <lastmod>2024-03-14T19:25:43.988Z</lastmod>
   </url>
   <url>
-    <loc>https://janickweberpals.github.io/bias_simulation_missing_data/scripts/02_missingness_generation.html</loc>
-    <lastmod>2024-03-14T17:58:10.049Z</lastmod>
+    <loc>https://drugepi.gitlab-pages.partners.org/bias_simulation_missing_data/scripts/02_missingness_generation.html</loc>
+    <lastmod>2024-03-14T19:25:44.004Z</lastmod>
   </url>
   <url>
-    <loc>https://janickweberpals.github.io/bias_simulation_missing_data/scripts/03_run_simulation.html</loc>
-    <lastmod>2024-03-14T17:58:10.054Z</lastmod>
+    <loc>https://drugepi.gitlab-pages.partners.org/bias_simulation_missing_data/scripts/03_run_simulation.html</loc>
+    <lastmod>2024-03-14T19:25:44.009Z</lastmod>
   </url>
   <url>
-    <loc>https://janickweberpals.github.io/bias_simulation_missing_data/scripts/04_simulation_results.html</loc>
-    <lastmod>2024-03-14T17:58:10.071Z</lastmod>
+    <loc>https://drugepi.gitlab-pages.partners.org/bias_simulation_missing_data/scripts/04_simulation_results.html</loc>
+    <lastmod>2024-03-14T19:25:44.028Z</lastmod>
   </url>
 </urlset>

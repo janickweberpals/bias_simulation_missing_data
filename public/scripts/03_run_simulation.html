@@ -9,7 +9,7 @@
 <meta name="author" content="Janick Weberpals">
 <meta name="dcterms.date" content="2024-03-14">
 
-<title>A simple complete case analysis example - 3&nbsp; Simulation script</title>
+<title>A simulation of bias introduced by missing confounder data - 3&nbsp; Simulation script</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,9 +125,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">A simple complete case analysis example</a> 
+      <a href="../">A simulation of bias introduced by missing confounder data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/janickweberpals/bias_simulation_missing_data" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -211,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#save-simulation-results" id="toc-save-simulation-results" class="nav-link" data-scroll-target="#save-simulation-results"><span class="header-section-number">3.4</span> Save simulation results</a></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info"><span class="header-section-number">3.5</span> Session info</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/janickweberpals/bias_simulation_missing_data/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Simulation based on continuous distribution: 236.826 sec elapsed</code></pre>
+<pre><code>Simulation based on continuous distribution: 248.17 sec elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -313,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Simulation based on discrete distribution: 260.606 sec elapsed</code></pre>
+<pre><code>Simulation based on discrete distribution: 259.149 sec elapsed</code></pre>
 </div>
 </div>
 </section>
@@ -330,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="session-info" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="session-info"><span class="header-section-number">3.5</span> Session info</h2>
-<p>Total script runtime: 8.29 minutes.</p>
+<p>Total script runtime: 8.46 minutes.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Loaded packages</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Session info</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Repositories</a></li></ul>
 <div class="tab-content">
@@ -655,7 +655,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("https:\/\/janickweberpals\.github\.io\/bias_simulation_missing_data");
+      var filterRegex = new RegExp("https:\/\/drugepi\.gitlab-pages\.partners\.org\/bias_simulation_missing_data");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }

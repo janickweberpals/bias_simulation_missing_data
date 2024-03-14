@@ -31,8 +31,7 @@ Follow these steps in RStudio to reproduce this study:
 
 ::: callout-note
 1.  Install all necessary dependencies (see above)
-2.  Add/adapt the paths to the datasets in `.Renviron`
-3.  In RStudio, run all scripts via `quarto render` or `Build > Render Book` (make sure quarto is installed)
+2.  In RStudio, run all scripts via `quarto render` or `Build > Render Book` (make sure quarto is installed)
 :::
 
 ## Repository structure and files {.unnumbered}

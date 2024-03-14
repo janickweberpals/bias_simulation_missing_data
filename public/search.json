@@ -2,35 +2,35 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "A simple complete case analysis example",
+    "title": "A simulation of bias introduced by missing confounder data",
     "section": "",
     "text": "Description"
   },
   {
     "objectID": "index.html#objective",
     "href": "index.html#objective",
-    "title": "A simple complete case analysis example",
+    "title": "A simulation of bias introduced by missing confounder data",
     "section": "Objective",
     "text": "Objective\nThe objective of this repository is to flexibly simulate de novo datasets with different missingness scenarios. The simulated datasets approximate the distributions of the empirical cohort used in the HDMI project."
   },
   {
     "objectID": "index.html#sec-dependencies",
     "href": "index.html#sec-dependencies",
-    "title": "A simple complete case analysis example",
+    "title": "A simulation of bias introduced by missing confounder data",
     "section": "Dependencies",
     "text": "Dependencies\nThis is a quarto project and R package dependencies are managed through the renv package. All packages and their versions can be viewed in the lockfile renv.lock. All required packages and the appropriate versions can be installed by running the following command:\n\n\nCode\nrenv::restore()\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThe dependencies are managed through Posit’s repository package manager (RSPM) version for your underlying OS distribution. If you use a different operating system than MacOS, please head over to the RSPM setup website and follow these steps:\n\nGo to the RSPM setup website\nChoose the operating system (if Linux, also choose the Linux distribution)\nGo to Repository URL: and copy-paste the URL to the options statement in the .Rprofile file\noptions(repos = c(REPO_NAME = “URL”))"
   },
   {
     "objectID": "index.html#reproducibility",
     "href": "index.html#reproducibility",
-    "title": "A simple complete case analysis example",
+    "title": "A simulation of bias introduced by missing confounder data",
     "section": "Reproducibility",
-    "text": "Reproducibility\nFollow these steps in RStudio to reproduce this study:\n\n\n\n\n\n\nNote\n\n\n\n\nInstall all necessary dependencies (see above)\nAdd/adapt the paths to the datasets in .Renviron\nIn RStudio, run all scripts via quarto render or Build &gt; Render Book (make sure quarto is installed)"
+    "text": "Reproducibility\nFollow these steps in RStudio to reproduce this study:\n\n\n\n\n\n\nNote\n\n\n\n\nInstall all necessary dependencies (see above)\nIn RStudio, run all scripts via quarto render or Build &gt; Render Book (make sure quarto is installed)"
   },
   {
     "objectID": "index.html#repository-structure-and-files",
     "href": "index.html#repository-structure-and-files",
-    "title": "A simple complete case analysis example",
+    "title": "A simulation of bias introduced by missing confounder data",
     "section": "Repository structure and files",
     "text": "Repository structure and files\n\nDirectory overview\n\n\n.\n├── README.md\n├── _quarto.yml\n├── cc_bias_simulation.Rproj\n├── data\n│   └── simulation_results.parquet\n├── functions\n│   ├── format_methods.R\n│   ├── generate_NA_cont.R\n│   ├── generate_NA_discrete.R\n│   ├── generate_data.R\n│   ├── ps_analysis_mids.R\n│   ├── rsimsum_ggplot.R\n│   └── run_simulation.R\n├── index.qmd\n├── index.rmarkdown\n├── public\n├── renv\n│   ├── activate.R\n│   ├── library\n│   ├── settings.json\n│   └── staging\n├── renv.lock\n├── scripts\n│   ├── 01_data_generation.qmd\n│   ├── 02_missingness_generation.qmd\n│   ├── 03_run_simulation.qmd\n│   ├── 04_simulation_results.md\n│   ├── 04_simulation_results.qmd\n│   └── 04_simulation_results_files\n├── site_libs\n│   ├── bootstrap\n│   ├── clipboard\n│   ├── crosstalk-1.2.1\n│   ├── htmlwidgets-1.6.4\n│   ├── jquery-3.5.1\n│   ├── plotly-binding-4.10.4\n│   ├── plotly-htmlwidgets-css-2.11.1\n│   ├── plotly-main-2.11.1\n│   ├── quarto-html\n│   ├── quarto-nav\n│   ├── quarto-search\n│   └── typedarray-0.1\n└── update_README.R\n\n\n\n.Rprofile - defines paths, activates renv, options for Posit R package manager\nscripts - main R/RMarkdown scripts\nfunctions - helper functions called in scripts\nrenv/renv.lock - renv directories to manage R dependencies and versions used in this simulation\ndocs - output of Quarto scripts\nREADME - essential information about the project (README.Rmd renders to README.md via update_README.R after each quarto render command)"
   },
@@ -123,14 +123,14 @@
     "href": "scripts/03_run_simulation.html#continuous-distribution-probabilities",
     "title": "3  Simulation script",
     "section": "3.2 Continuous distribution probabilities",
-    "text": "3.2 Continuous distribution probabilities\nProbabilities are based on a continuous distribution.\n\ntic(msg = \"Simulation based on continuous distribution\")\n\nresults &lt;- parallel::mclapply(\n  X = 1:n_replicates,\n  FUN = run_simulation,\n  pattern = pattern,\n  weights = weights,\n  type = \"RIGHT\",\n  prop = prop,\n  mc.cores = parallel::detectCores()-1\n  ) \n  \nresults_cont &lt;- do.call(rbind, results) |&gt; \n  mutate(simulation = \"Continuous distribution (RIGHT)\")\n\ntoc()\n\nSimulation based on continuous distribution: 236.826 sec elapsed"
+    "text": "3.2 Continuous distribution probabilities\nProbabilities are based on a continuous distribution.\n\ntic(msg = \"Simulation based on continuous distribution\")\n\nresults &lt;- parallel::mclapply(\n  X = 1:n_replicates,\n  FUN = run_simulation,\n  pattern = pattern,\n  weights = weights,\n  type = \"RIGHT\",\n  prop = prop,\n  mc.cores = parallel::detectCores()-1\n  ) \n  \nresults_cont &lt;- do.call(rbind, results) |&gt; \n  mutate(simulation = \"Continuous distribution (RIGHT)\")\n\ntoc()\n\nSimulation based on continuous distribution: 248.17 sec elapsed"
   },
   {
     "objectID": "scripts/03_run_simulation.html#discrete-distribution-probabilities",
     "href": "scripts/03_run_simulation.html#discrete-distribution-probabilities",
     "title": "3  Simulation script",
     "section": "3.3 Discrete distribution probabilities",
-    "text": "3.3 Discrete distribution probabilities\nProbabilities are based on a discrete distribution.\n\ntic(msg = \"Simulation based on discrete distribution\")\n\nodds &lt;- c(1, 2, 3, 4)\n\nresults &lt;- parallel::mclapply(\n  X = 1:n_replicates,\n  FUN = run_simulation,\n  pattern = pattern,\n  weights = weights,\n  odds = odds,\n  prop = prop,\n  mc.cores = parallel::detectCores()-1\n  ) \n  \nresults_odds &lt;- do.call(rbind, results) |&gt; \n  mutate(simulation = paste0(\"Discrete odds (\", paste0(odds, collapse = \", \"), \")\"))\n\ntoc()\n\nSimulation based on discrete distribution: 260.606 sec elapsed"
+    "text": "3.3 Discrete distribution probabilities\nProbabilities are based on a discrete distribution.\n\ntic(msg = \"Simulation based on discrete distribution\")\n\nodds &lt;- c(1, 2, 3, 4)\n\nresults &lt;- parallel::mclapply(\n  X = 1:n_replicates,\n  FUN = run_simulation,\n  pattern = pattern,\n  weights = weights,\n  odds = odds,\n  prop = prop,\n  mc.cores = parallel::detectCores()-1\n  ) \n  \nresults_odds &lt;- do.call(rbind, results) |&gt; \n  mutate(simulation = paste0(\"Discrete odds (\", paste0(odds, collapse = \", \"), \")\"))\n\ntoc()\n\nSimulation based on discrete distribution: 259.149 sec elapsed"
   },
   {
     "objectID": "scripts/03_run_simulation.html#save-simulation-results",
@@ -144,14 +144,14 @@
     "href": "scripts/03_run_simulation.html#session-info",
     "title": "3  Simulation script",
     "section": "3.5 Session info",
-    "text": "3.5 Session info\nTotal script runtime: 8.29 minutes.\n\nLoaded packagesSession infoRepositories\n\n\n\npander::pander(subset(data.frame(sessioninfo::package_info()), attached==TRUE, c(package, loadedversion)))\n\n\n\n\n\n\n\n\n\n \npackage\nloadedversion\n\n\n\n\narrow\narrow\n14.0.0.2\n\n\ndplyr\ndplyr\n1.1.4\n\n\nhere\nhere\n1.0.1\n\n\ntictoc\ntictoc\n1.2\n\n\n\n\n\n\n\n\npander::pander(sessionInfo())\n\nR version 4.3.2 (2023-10-31)\nPlatform: aarch64-apple-darwin20 (64-bit)\nlocale: en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8\nattached base packages: parallel, stats, graphics, grDevices, datasets, utils, methods and base\nother attached packages: tictoc(v.1.2), dplyr(v.1.1.4), arrow(v.14.0.0.2) and here(v.1.0.1)\nloaded via a namespace (and not attached): bit(v.4.0.5), jsonlite(v.1.8.8), compiler(v.4.3.2), renv(v.1.0.3), tidyselect(v.1.2.0), Rcpp(v.1.0.12), simsurv(v.1.0.0), assertthat(v.0.2.1), yaml(v.2.3.8), fastmap(v.1.1.1), R6(v.2.5.1), generics(v.0.1.3), knitr(v.1.45), htmlwidgets(v.1.6.4), tibble(v.3.2.1), pander(v.0.6.5), rprojroot(v.2.0.4), pillar(v.1.9.0), rlang(v.1.1.2), utf8(v.1.2.4), xfun(v.0.41), bit64(v.4.0.5), cli(v.3.6.2), withr(v.3.0.0), magrittr(v.2.0.3), digest(v.0.6.33), lifecycle(v.1.0.4), vctrs(v.0.6.5), evaluate(v.0.23), glue(v.1.6.2), sessioninfo(v.1.2.2), fansi(v.1.0.6), rmarkdown(v.2.25), purrr(v.1.0.2), tools(v.4.3.2), pkgconfig(v.2.0.3) and htmltools(v.0.5.7)\n\n\n\n\n\npander::pander(options('repos'))\n\n\nrepos:\n\n\n\n\n\n\nREPO_NAME\n\n\n\n\nhttps://packagemanager.posit.co/cran/latest"
+    "text": "3.5 Session info\nTotal script runtime: 8.46 minutes.\n\nLoaded packagesSession infoRepositories\n\n\n\npander::pander(subset(data.frame(sessioninfo::package_info()), attached==TRUE, c(package, loadedversion)))\n\n\n\n\n\n\n\n\n\n \npackage\nloadedversion\n\n\n\n\narrow\narrow\n14.0.0.2\n\n\ndplyr\ndplyr\n1.1.4\n\n\nhere\nhere\n1.0.1\n\n\ntictoc\ntictoc\n1.2\n\n\n\n\n\n\n\n\npander::pander(sessionInfo())\n\nR version 4.3.2 (2023-10-31)\nPlatform: aarch64-apple-darwin20 (64-bit)\nlocale: en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8\nattached base packages: parallel, stats, graphics, grDevices, datasets, utils, methods and base\nother attached packages: tictoc(v.1.2), dplyr(v.1.1.4), arrow(v.14.0.0.2) and here(v.1.0.1)\nloaded via a namespace (and not attached): bit(v.4.0.5), jsonlite(v.1.8.8), compiler(v.4.3.2), renv(v.1.0.3), tidyselect(v.1.2.0), Rcpp(v.1.0.12), simsurv(v.1.0.0), assertthat(v.0.2.1), yaml(v.2.3.8), fastmap(v.1.1.1), R6(v.2.5.1), generics(v.0.1.3), knitr(v.1.45), htmlwidgets(v.1.6.4), tibble(v.3.2.1), pander(v.0.6.5), rprojroot(v.2.0.4), pillar(v.1.9.0), rlang(v.1.1.2), utf8(v.1.2.4), xfun(v.0.41), bit64(v.4.0.5), cli(v.3.6.2), withr(v.3.0.0), magrittr(v.2.0.3), digest(v.0.6.33), lifecycle(v.1.0.4), vctrs(v.0.6.5), evaluate(v.0.23), glue(v.1.6.2), sessioninfo(v.1.2.2), fansi(v.1.0.6), rmarkdown(v.2.25), purrr(v.1.0.2), tools(v.4.3.2), pkgconfig(v.2.0.3) and htmltools(v.0.5.7)\n\n\n\n\n\npander::pander(options('repos'))\n\n\nrepos:\n\n\n\n\n\n\nREPO_NAME\n\n\n\n\nhttps://packagemanager.posit.co/cran/latest"
   },
   {
     "objectID": "scripts/04_simulation_results.html#about",
     "href": "scripts/04_simulation_results.html#about",
     "title": "4  Simulation results",
     "section": "4.1 About",
-    "text": "4.1 About\nThis script analyzes the raw simulation results obtained in the previous script via run_simulation.R and was last run on 2024-03-14 13:58:07.490328."
+    "text": "4.1 About\nThis script analyzes the raw simulation results obtained in the previous script via run_simulation.R and was last run on 2024-03-14 15:25:41.407404."
   },
   {
     "objectID": "scripts/04_simulation_results.html#read-raw-results-table",

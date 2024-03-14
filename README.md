@@ -37,8 +37,7 @@ setup website and follow these steps:
 Follow these steps in RStudio to reproduce this study:
 
 1.  Install all necessary dependencies (see above)
-2.  Add/adapt the paths to the datasets in `.Renviron`
-3.  In RStudio, run all scripts via `quarto render` or
+2.  In RStudio, run all scripts via `quarto render` or
     `Build > Render Book` (make sure quarto is installed)
 
 ## Repository structure and files

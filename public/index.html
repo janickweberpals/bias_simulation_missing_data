@@ -8,7 +8,7 @@
 
 <meta name="author" content="Janick Weberpals">
 
-<title>A simple complete case analysis example</title>
+<title>A simulation of bias introduced by missing confounder data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -123,9 +123,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">A simple complete case analysis example</a> 
+      <a href="./">A simulation of bias introduced by missing confounder data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/janickweberpals/bias_simulation_missing_data" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -214,14 +214,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/janickweberpals/bias_simulation_missing_data/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A simple complete case analysis example</h1>
+<h1 class="title">A simulation of bias introduced by missing confounder data</h1>
 </div>
 
 
@@ -292,7 +292,6 @@ Note
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Install all necessary dependencies (see above)</li>
-<li>Add/adapt the paths to the datasets in <code>.Renviron</code></li>
 <li>In RStudio, run all scripts via <code>quarto render</code> or <code>Build &gt; Render Book</code> (make sure quarto is installed)</li>
 </ol>
 </div>
@@ -597,7 +596,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("https:\/\/janickweberpals\.github\.io\/bias_simulation_missing_data");
+      var filterRegex = new RegExp("https:\/\/drugepi\.gitlab-pages\.partners\.org\/bias_simulation_missing_data");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
