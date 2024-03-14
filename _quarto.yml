@@ -23,7 +23,7 @@ book:
         - scripts/04_simulation_results.qmd
 
   reader-mode: true
-  repo-url: https://gitlab-scm.drugepi/bias_simulation_missing_data
+  repo-url: https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data
   site-url: https://janickweberpals.github.io/bias_simulation_missing_data
   repo-actions: [issue]
 
