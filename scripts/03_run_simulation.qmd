@@ -3,6 +3,7 @@ title: "Simulation script"
 subtitle: "Simulate different scenarios and missingness mitigation approaches"
 author: "Janick Weberpals"
 date: "`r Sys.Date()`"
+code-fold: false
 params:
   n_replicates: 1000
 ---

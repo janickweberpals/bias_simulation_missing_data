@@ -51,13 +51,6 @@ Follow these steps in RStudio to reproduce this study:
     ## ├── cc_bias_simulation.Rproj
     ## ├── data
     ## │   └── simulation_results.parquet
-    ## ├── docs
-    ## │   ├── index.html
-    ## │   ├── robots.txt
-    ## │   ├── scripts
-    ## │   ├── search.json
-    ## │   ├── site_libs
-    ## │   └── sitemap.xml
     ## ├── functions
     ## │   ├── format_methods.R
     ## │   ├── generate_NA_cont.R
@@ -67,6 +60,13 @@ Follow these steps in RStudio to reproduce this study:
     ## │   ├── rsimsum_ggplot.R
     ## │   └── run_simulation.R
     ## ├── index.qmd
+    ## ├── public
+    ## │   ├── index.html
+    ## │   ├── robots.txt
+    ## │   ├── scripts
+    ## │   ├── search.json
+    ## │   ├── site_libs
+    ## │   └── sitemap.xml
     ## ├── renv
     ## │   ├── activate.R
     ## │   ├── library

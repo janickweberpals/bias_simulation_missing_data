@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: docs
+  output-dir: public
   post-render: 
     - update_README.R
 
@@ -23,7 +23,7 @@ book:
         - scripts/04_simulation_results.qmd
 
   reader-mode: true
-  repo-url: https://github.com/janickweberpals/bias_simulation_missing_data
+  repo-url: https://gitlab-scm.drugepi/bias_simulation_missing_data
   site-url: https://janickweberpals.github.io/bias_simulation_missing_data
   repo-actions: [issue]
 
