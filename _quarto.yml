@@ -24,7 +24,7 @@ book:
 
   reader-mode: true
   repo-url: https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data
-  site-url: https://janickweberpals.github.io/bias_simulation_missing_data
+  site-url: https://drugepi.gitlab-pages.partners.org/bias_simulation_missing_data
   repo-actions: [issue]
 
 format:
