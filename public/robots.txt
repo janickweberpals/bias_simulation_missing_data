@@ -1,1 +1,0 @@
-Sitemap: https://drugepi.gitlab-pages.partners.org/bias_simulation_missing_data/sitemap.xml
