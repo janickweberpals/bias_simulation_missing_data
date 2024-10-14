@@ -12,6 +12,7 @@ params:
   n_replicates: 2
 ---
 
+
 ```{r}
 #| label: setup
 #| include: false
