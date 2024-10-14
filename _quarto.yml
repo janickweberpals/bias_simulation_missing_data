@@ -1,8 +1,8 @@
 project:
   type: book
   output-dir: doc
-  post-render: 
-    - update_README.R
+  # post-render: 
+  #   - update_README.R
 
 book:
   title: "A simulation of bias introduced by missing confounder data"
