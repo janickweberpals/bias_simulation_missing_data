@@ -33,7 +33,7 @@ jobs:
         uses: quarto-dev/quarto-actions/render@v2
         with:
           to: html # If set, it will be equivalent to `quarto render --to html`
-          path: source-folder # By default, the current working dir is used i.e `quarto render .`
+          path: scripts/ # By default, the current working dir is used i.e `quarto render .`
       
       - name: Run quarto
         run: cp -R doc public/
