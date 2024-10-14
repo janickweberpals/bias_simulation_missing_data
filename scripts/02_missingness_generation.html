@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Janick Weberpals">
-<meta name="dcterms.date" content="2024-03-14">
+<meta name="dcterms.date" content="2024-10-14">
 
 <title>A simulation of bias introduced by missing confounder data - 2&nbsp; Missingness generation</title>
 <style>
@@ -213,8 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-3-computing-a-scaled-weighted-sum-score-wss" id="toc-step-3-computing-a-scaled-weighted-sum-score-wss" class="nav-link" data-scroll-target="#step-3-computing-a-scaled-weighted-sum-score-wss"><span class="header-section-number">2.4</span> Step 3: Computing a (scaled) weighted sum score (wss)</a></li>
   <li><a href="#step-4-converting-wss-to-probabilities" id="toc-step-4-converting-wss-to-probabilities" class="nav-link" data-scroll-target="#step-4-converting-wss-to-probabilities"><span class="header-section-number">2.5</span> Step 4: Converting wss to probabilities</a>
   <ul class="collapse">
-  <li><a href="#option-1-logistic-probabilities-based-on-continuous-weighted-sum-score" id="toc-option-1-logistic-probabilities-based-on-continuous-weighted-sum-score" class="nav-link" data-scroll-target="#option-1-logistic-probabilities-based-on-continuous-weighted-sum-score"><span class="header-section-number">2.5.1</span> Option 1: Logistic probabilities based on continuous weighted sum score</a></li>
-  <li><a href="#option-2-discrete-probabilities-based-on-continuous-weighted-sum-score-quantiles" id="toc-option-2-discrete-probabilities-based-on-continuous-weighted-sum-score-quantiles" class="nav-link" data-scroll-target="#option-2-discrete-probabilities-based-on-continuous-weighted-sum-score-quantiles"><span class="header-section-number">2.5.2</span> Option 2: Discrete probabilities based on continuous weighted sum score quantiles</a></li>
+  <li><a href="#discrete-probabilities-based-on-continuous-weighted-sum-score-quantiles" id="toc-discrete-probabilities-based-on-continuous-weighted-sum-score-quantiles" class="nav-link" data-scroll-target="#discrete-probabilities-based-on-continuous-weighted-sum-score-quantiles"><span class="header-section-number">2.5.1</span> Discrete probabilities based on continuous weighted sum score quantiles</a></li>
   </ul></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info"><span class="header-section-number">2.6</span> Session info</a></li>
   </ul>
@@ -243,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 14, 2024</p>
+      <p class="date">October 14, 2024</p>
     </div>
   </div>
   
@@ -1885,641 +1884,80 @@ wss_i = w_{k,1} \cdot y_{1,i} + w_{k,2} \cdot y_{2,i} + ... + w_{k,m} \cdot y_{m
 </section>
 <section id="step-4-converting-wss-to-probabilities" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="step-4-converting-wss-to-probabilities"><span class="header-section-number">2.5</span> Step 4: Converting wss to probabilities</h2>
-<section id="option-1-logistic-probabilities-based-on-continuous-weighted-sum-score" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="option-1-logistic-probabilities-based-on-continuous-weighted-sum-score"><span class="header-section-number">2.5.1</span> Option 1: Logistic probabilities based on continuous weighted sum score</h3>
-<p>The scaled weighted sum scores are then eventually converted into actual probabilities for individual <span class="math inline">\(i\)</span> to have an observed or missing <span class="math inline">\(Z2\)</span>. To that end, the <code>mice::ampute</code> function provides different <a href="https://github.com/amices/mice/blob/master/R/ampute.continuous.R#L38">logistic probability distributions</a>:</p>
+<section id="discrete-probabilities-based-on-continuous-weighted-sum-score-quantiles" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="discrete-probabilities-based-on-continuous-weighted-sum-score-quantiles"><span class="header-section-number">2.5.1</span> Discrete probabilities based on continuous weighted sum score quantiles</h3>
+<p>An alternative to using the <code>ampute()</code> default different logistic probability distributions to map the weighted sum scores to a missingness probablity is to use <strong>discrete probabilities</strong> as described in <a href="https://repub.eur.nl/pub/19790/990408_BRAND,%20Jacob%20Pieter%20Laurens.pdf">Brand (1999, pp.&nbsp;110-113)</a>. The weighted sum scores of all patients are divided over a certain number of equally sized groups, or quantiles. <strong>An odds value defines the relative probability of each quantile group of becoming incomplete</strong>. In the following example, the weighted sum scores are divided over 4 groups/quantile with the highest quantile having a four-fold odds of having a missing value for <span class="math inline">\(Z2\)</span>.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Type =</span> <span class="fu">c</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RIGHT"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LEFT"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MID"</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"TAIL"</span>),</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Formula =</span> <span class="fu">c</span>(</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"$$</span><span class="sc">\\</span><span class="st">text{logit}(-</span><span class="sc">\\</span><span class="st">text{mean}(wss) + x + b)$$"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"$$</span><span class="sc">\\</span><span class="st">text{logit}(</span><span class="sc">\\</span><span class="st">text{mean}(wss) - wss + b)$$"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"$$</span><span class="sc">\\</span><span class="st">text{logit}(-</span><span class="sc">\\</span><span class="st">text{abs}(wss - </span><span class="sc">\\</span><span class="st">text{mean}(wss)) + 0.75 + b)$$"</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"$$</span><span class="sc">\\</span><span class="st">text{logit}(</span><span class="sc">\\</span><span class="st">text{abs}(wss - </span><span class="sc">\\</span><span class="st">text{mean}(wss)) - 0.75 + b)$$"</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_footnote</span>(</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">"Note: b is a shift parameter that adjusts the probability curves to receive the desired proportion of missingness"</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_markdown</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the predictor columns with a 1 or non-zero value</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>odds <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>data_miss <span class="ot">&lt;-</span> mice<span class="sc">::</span><span class="fu">ampute</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> cohort,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop =</span> <span class="fl">0.5</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mech =</span> <span class="st">"MAR"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">patterns =</span> pattern,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> weights,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">bycases =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cont =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">odds =</span> odds</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> cohort <span class="sc">|&gt;</span> </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wss =</span> <span class="fu">unlist</span>(data_miss<span class="sc">$</span>scores)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">quantile =</span> <span class="fu">ntile</span>(<span class="at">x =</span> wss, <span class="at">n =</span> <span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">isNA =</span> <span class="fu">is.na</span>(data_miss<span class="sc">$</span>amp<span class="sc">$</span>Z2))</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wss, <span class="fu">aes</span>(<span class="at">x =</span> wss, <span class="at">y =</span> quantile, <span class="at">color =</span> <span class="fu">factor</span>(isNA))) <span class="sc">+</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Standardized weighted sum score (wss)"</span>, </span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Quantile"</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Is NA"</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="tbl-prob" class="anchored">
-
-<div id="vjaxnmnzja" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vjaxnmnzja table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#vjaxnmnzja thead, #vjaxnmnzja tbody, #vjaxnmnzja tfoot, #vjaxnmnzja tr, #vjaxnmnzja td, #vjaxnmnzja th {
-  border-style: none;
-}
-
-#vjaxnmnzja p {
-  margin: 0;
-  padding: 0;
-}
-
-#vjaxnmnzja .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#vjaxnmnzja .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#vjaxnmnzja .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#vjaxnmnzja .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#vjaxnmnzja .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#vjaxnmnzja .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vjaxnmnzja .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#vjaxnmnzja .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#vjaxnmnzja .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#vjaxnmnzja .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#vjaxnmnzja .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#vjaxnmnzja .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#vjaxnmnzja .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#vjaxnmnzja .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#vjaxnmnzja .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#vjaxnmnzja .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#vjaxnmnzja .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#vjaxnmnzja .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#vjaxnmnzja .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vjaxnmnzja .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#vjaxnmnzja .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#vjaxnmnzja .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#vjaxnmnzja .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vjaxnmnzja .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#vjaxnmnzja .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#vjaxnmnzja .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vjaxnmnzja .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vjaxnmnzja .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#vjaxnmnzja .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vjaxnmnzja .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#vjaxnmnzja .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vjaxnmnzja .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vjaxnmnzja .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vjaxnmnzja .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vjaxnmnzja .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vjaxnmnzja .gt_left {
-  text-align: left;
-}
-
-#vjaxnmnzja .gt_center {
-  text-align: center;
-}
-
-#vjaxnmnzja .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#vjaxnmnzja .gt_font_normal {
-  font-weight: normal;
-}
-
-#vjaxnmnzja .gt_font_bold {
-  font-weight: bold;
-}
-
-#vjaxnmnzja .gt_font_italic {
-  font-style: italic;
-}
-
-#vjaxnmnzja .gt_super {
-  font-size: 65%;
-}
-
-#vjaxnmnzja .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#vjaxnmnzja .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#vjaxnmnzja .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#vjaxnmnzja .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#vjaxnmnzja .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#vjaxnmnzja .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#vjaxnmnzja .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;2.3:  <p>Logistic probability distributions to convert <span class="math inline"><em>w</em><em>s</em><em>s</em></span> to missingness
-probabilities.</p> </caption>
-  <thead>
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Type">Type</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Formula">Formula</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Type" class="gt_row gt_left"><div data-qmd="RIGHT"><div class="gt_from_md"><p>RIGHT</p>
-</div></div></td>
-<td headers="Formula" class="gt_row gt_left"><div data-qmd="$$\text{logit}(-\text{mean}(wss) + x + b)$$"><div class="gt_from_md"><p>$$\text{logit}(-\text{mean}(wss) + x + b)$$</p>
-</div></div></td></tr>
-    <tr><td headers="Type" class="gt_row gt_left"><div data-qmd="LEFT"><div class="gt_from_md"><p>LEFT</p>
-</div></div></td>
-<td headers="Formula" class="gt_row gt_left"><div data-qmd="$$\text{logit}(\text{mean}(wss) - wss + b)$$"><div class="gt_from_md"><p>$$\text{logit}(\text{mean}(wss) - wss + b)$$</p>
-</div></div></td></tr>
-    <tr><td headers="Type" class="gt_row gt_left"><div data-qmd="MID"><div class="gt_from_md"><p>MID</p>
-</div></div></td>
-<td headers="Formula" class="gt_row gt_left"><div data-qmd="$$\text{logit}(-\text{abs}(wss - \text{mean}(wss)) + 0.75 + b)$$"><div class="gt_from_md"><p>$$\text{logit}(-\text{abs}(wss - \text{mean}(wss)) + 0.75 + b)$$</p>
-</div></div></td></tr>
-    <tr><td headers="Type" class="gt_row gt_left"><div data-qmd="TAIL"><div class="gt_from_md"><p>TAIL</p>
-</div></div></td>
-<td headers="Formula" class="gt_row gt_left"><div data-qmd="$$\text{logit}(\text{abs}(wss - \text{mean}(wss)) - 0.75 + b)$$"><div class="gt_from_md"><p>$$\text{logit}(\text{abs}(wss - \text{mean}(wss)) - 0.75 + b)$$</p>
-</div></div></td></tr>
-  </tbody>
-  
-  <tfoot class="gt_footnotes">
-    <tr>
-      <td class="gt_footnote" colspan="2"> Note: b is a shift parameter that adjusts the probability curves to receive the desired proportion of missingness</td>
-    </tr>
-  </tfoot>
-</table>
-</div>
+<div id="fig-odds1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="02_missingness_generation_files/figure-html/fig-odds1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;2.1: Imposed missingness based on scaled weighted sum score and corresponding quantile membership.</figcaption>
+</figure>
 </div>
 </div>
 </div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the probability distribution functions</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>RIGHT <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(x) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(x))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>LEFT <span class="ot">&lt;-</span> <span class="cf">function</span>(x, b) <span class="fu">plogis</span>(<span class="fu">mean</span>(x) <span class="sc">-</span> x <span class="sc">+</span> b)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>MID <span class="ot">&lt;-</span> <span class="cf">function</span>(x, b) <span class="fu">plogis</span>(<span class="sc">-</span><span class="fu">abs</span>(x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">+</span> <span class="fl">0.75</span> <span class="sc">+</span> b)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>TAIL <span class="ot">&lt;-</span> <span class="cf">function</span>(x, b) <span class="fu">plogis</span>(<span class="fu">abs</span>(x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">-</span> <span class="fl">0.75</span> <span class="sc">+</span> b)</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>odds_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  isNA <span class="sc">~</span> wss,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wss,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="st">"binomial"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of x values</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> wss <span class="sc">|&gt;</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">probabilities =</span> <span class="fu">fitted</span>(odds_fit))</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the functions at x</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>right_values <span class="ot">&lt;-</span> <span class="fu">RIGHT</span>(x)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>left_values <span class="ot">&lt;-</span> <span class="fu">LEFT</span>(x, <span class="at">b =</span> <span class="dv">0</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>mid_values <span class="ot">&lt;-</span> <span class="fu">MID</span>(x, <span class="at">b =</span> <span class="dv">0</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>tail_values <span class="ot">&lt;-</span> <span class="fu">TAIL</span>(x, <span class="at">b =</span> <span class="dv">0</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame for ggplot</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rep</span>(x, <span class="dv">4</span>),</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(right_values, left_values, mid_values, tail_values),</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"RIGHT"</span>, <span class="st">"LEFT"</span>, <span class="st">"MID"</span>, <span class="st">"TAIL"</span>), <span class="at">each =</span> <span class="fu">length</span>(x))</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot using ggplot</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> type, <span class="at">linetype =</span> type)) <span class="sc">+</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Weighted sum score (wss)"</span>, </span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability"</span>,</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Type"</span>,</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">linetype =</span> <span class="st">"Type"</span>,</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Probability Distributions based on weighted sum score"</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wss, <span class="fu">aes</span>(<span class="at">x =</span> wss, <span class="at">y =</span> probabilities, <span class="at">color =</span> <span class="fu">factor</span>(quantile))) <span class="sc">+</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Standardized weighted sum score (wss)"</span>, </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability"</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Is NA"</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-prob" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-odds2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="02_missingness_generation_files/figure-html/fig-prob-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.1: Logistic probability distributions to convert <span class="math inline">\(wss\)</span> to missingness probabilities.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>If we apply the <code>RIGHT</code> probability distribution type to our simulated data, the missingness probability looks like this.</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data_miss <span class="ot">&lt;-</span> mice<span class="sc">::</span><span class="fu">ampute</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> cohort,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop =</span> <span class="fl">0.5</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mech =</span> <span class="st">"MAR"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">patterns =</span> pattern,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> weights,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">bycases =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"RIGHT"</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> cohort <span class="sc">|&gt;</span> </span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wss =</span> <span class="fu">unlist</span>(data_miss<span class="sc">$</span>scores)) <span class="sc">|&gt;</span> </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pr =</span> <span class="fu">RIGHT</span>(wss))</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wss, <span class="fu">aes</span>(<span class="at">x =</span> wss, <span class="at">y =</span> pr)) <span class="sc">+</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_point(aes(x = scale(Z2), y = pr), alpha = 0.1) +</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Standardized weighted sum score (wss)"</span>, </span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability"</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div id="fig-prob_cohort" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02_missingness_generation_files/figure-html/fig-prob_cohort-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.2: <span class="math inline">\(RIGHT\)</span> ogistic probability distributions to convert <span class="math inline">\(wss\)</span> to missingness probabilities. Here patients with higher <span class="math inline">\(Z2\)</span> values and those with <span class="math inline">\(U\)</span> present have higher <span class="math inline">\(wss\)</span> and are more likely to become missing.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="option-2-discrete-probabilities-based-on-continuous-weighted-sum-score-quantiles" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="option-2-discrete-probabilities-based-on-continuous-weighted-sum-score-quantiles"><span class="header-section-number">2.5.2</span> Option 2: Discrete probabilities based on continuous weighted sum score quantiles</h3>
-<p>An alternative to using the different logistic probability distributions to map the weighted sum scores to a missingness probablity is to use <strong>discrete probabilities</strong> as described in <a href="https://repub.eur.nl/pub/19790/990408_BRAND,%20Jacob%20Pieter%20Laurens.pdf">Brand (1999, pp.&nbsp;110-113)</a>. The weighted sum scores of all patients are divided over a certain number of equally sized groups, or quantiles. <strong>An odds value defines the relative probability of each quantile group of becoming incomplete</strong>. In the following example, the weighted sum scores are divided over 4 groups/quantile with the highest quantile having a four-fold odds of having a missing value for <span class="math inline">\(Z2\)</span>.</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the predictor columns with a 1 or non-zero value</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>odds <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>data_miss <span class="ot">&lt;-</span> mice<span class="sc">::</span><span class="fu">ampute</span>(</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> cohort,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop =</span> <span class="fl">0.5</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mech =</span> <span class="st">"MAR"</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">patterns =</span> pattern,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> weights,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">bycases =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cont =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">odds =</span> odds</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> cohort <span class="sc">|&gt;</span> </span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wss =</span> <span class="fu">unlist</span>(data_miss<span class="sc">$</span>scores)) <span class="sc">|&gt;</span> </span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">quantile =</span> <span class="fu">ntile</span>(<span class="at">x =</span> wss, <span class="at">n =</span> <span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">isNA =</span> <span class="fu">is.na</span>(data_miss<span class="sc">$</span>amp<span class="sc">$</span>Z2))</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wss, <span class="fu">aes</span>(<span class="at">x =</span> wss, <span class="at">y =</span> quantile, <span class="at">color =</span> <span class="fu">factor</span>(isNA))) <span class="sc">+</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Standardized weighted sum score (wss)"</span>, </span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Quantile"</span>,</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Is NA"</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div id="fig-odds" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02_missingness_generation_files/figure-html/fig-odds-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.3: Imposed missingness based on scaled weighted sum score and corresponding quantile membership.</figcaption>
+<p><img src="02_missingness_generation_files/figure-html/fig-odds2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;2.2: Imposed missingness based on scaled weighted sum score and corresponding missingness probability.</figcaption>
 </figure>
 </div>
 </div>
@@ -2528,7 +1966,7 @@ probabilities.</p> </caption>
 </section>
 <section id="session-info" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="session-info"><span class="header-section-number">2.6</span> Session info</h2>
-<p>Script runtime: 0.03 minutes.</p>
+<p>Script runtime: 0.10 minutes.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Loaded packages</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Session info</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Repositories</a></li></ul>
 <div class="tab-content">
@@ -2536,7 +1974,7 @@ probabilities.</p> </caption>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">subset</span>(<span class="fu">data.frame</span>(sessioninfo<span class="sc">::</span><span class="fu">package_info</span>()), attached<span class="sc">==</span><span class="cn">TRUE</span>, <span class="fu">c</span>(package, loadedversion)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">subset</span>(<span class="fu">data.frame</span>(sessioninfo<span class="sc">::</span><span class="fu">package_info</span>()), attached<span class="sc">==</span><span class="cn">TRUE</span>, <span class="fu">c</span>(package, loadedversion)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
@@ -2622,15 +2060,15 @@ probabilities.</p> </caption>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">sessionInfo</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">sessionInfo</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><strong>R version 4.3.2 (2023-10-31)</strong></p>
-<p><strong>Platform:</strong> aarch64-apple-darwin20 (64-bit)</p>
+<p><strong>R version 4.4.0 (2024-04-24)</strong></p>
+<p><strong>Platform:</strong> aarch64-apple-darwin20</p>
 <p><strong>locale:</strong> en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8</p>
 <p><strong>attached base packages:</strong> <em>stats</em>, <em>graphics</em>, <em>grDevices</em>, <em>datasets</em>, <em>utils</em>, <em>methods</em> and <em>base</em></p>
 <p><strong>other attached packages:</strong> <em>tictoc(v.1.2)</em>, <em>mice(v.3.16.0)</em>, <em>gtools(v.3.9.5)</em>, <em>ggthemes(v.5.1.0)</em>, <em>gtsummary(v.1.7.2)</em>, <em>gt(v.0.10.1)</em>, <em>ggplot2(v.3.4.4)</em>, <em>ggsurvfit(v.1.0.0)</em>, <em>survival(v.3.5-8)</em>, <em>dplyr(v.1.1.4)</em>, <em>arrow(v.14.0.0.2)</em> and <em>here(v.1.0.1)</em></p>
-<p><strong>loaded via a namespace (and not attached):</strong> <em>gtable(v.0.3.4)</em>, <em>shape(v.1.4.6)</em>, <em>xfun(v.0.41)</em>, <em>htmlwidgets(v.1.6.4)</em>, <em>lattice(v.0.22-5)</em>, <em>simsurv(v.1.0.0)</em>, <em>vctrs(v.0.6.5)</em>, <em>tools(v.4.3.2)</em>, <em>generics(v.0.1.3)</em>, <em>tibble(v.3.2.1)</em>, <em>fansi(v.1.0.6)</em>, <em>pan(v.1.9)</em>, <em>pkgconfig(v.2.0.3)</em>, <em>jomo(v.2.7-6)</em>, <em>Matrix(v.1.6-4)</em>, <em>assertthat(v.0.2.1)</em>, <em>lifecycle(v.1.0.4)</em>, <em>farver(v.2.1.1)</em>, <em>compiler(v.4.3.2)</em>, <em>stringr(v.1.5.1)</em>, <em>munsell(v.0.5.0)</em>, <em>codetools(v.0.2-19)</em>, <em>sass(v.0.4.8)</em>, <em>htmltools(v.0.5.7)</em>, <em>yaml(v.2.3.8)</em>, <em>glmnet(v.4.1-8)</em>, <em>nloptr(v.2.0.3)</em>, <em>pillar(v.1.9.0)</em>, <em>tidyr(v.1.3.1)</em>, <em>MASS(v.7.3-60)</em>, <em>broom.helpers(v.1.14.0)</em>, <em>sessioninfo(v.1.2.2)</em>, <em>iterators(v.1.0.14)</em>, <em>rpart(v.4.1.23)</em>, <em>boot(v.1.3-28.1)</em>, <em>foreach(v.1.5.2)</em>, <em>mitml(v.0.4-5)</em>, <em>nlme(v.3.1-164)</em>, <em>commonmark(v.1.9.1)</em>, <em>tidyselect(v.1.2.0)</em>, <em>digest(v.0.6.33)</em>, <em>stringi(v.1.8.3)</em>, <em>pander(v.0.6.5)</em>, <em>purrr(v.1.0.2)</em>, <em>labeling(v.0.4.3)</em>, <em>forcats(v.1.0.0)</em>, <em>splines(v.4.3.2)</em>, <em>rprojroot(v.2.0.4)</em>, <em>fastmap(v.1.1.1)</em>, <em>grid(v.4.3.2)</em>, <em>colorspace(v.2.1-0)</em>, <em>cli(v.3.6.2)</em>, <em>magrittr(v.2.0.3)</em>, <em>utf8(v.1.2.4)</em>, <em>broom(v.1.0.5)</em>, <em>withr(v.3.0.0)</em>, <em>scales(v.1.3.0)</em>, <em>backports(v.1.4.1)</em>, <em>bit64(v.4.0.5)</em>, <em>rmarkdown(v.2.25)</em>, <em>nnet(v.7.3-19)</em>, <em>bit(v.4.0.5)</em>, <em>lme4(v.1.1-35.1)</em>, <em>evaluate(v.0.23)</em>, <em>knitr(v.1.45)</em>, <em>markdown(v.1.12)</em>, <em>rlang(v.1.1.2)</em>, <em>Rcpp(v.1.0.12)</em>, <em>glue(v.1.6.2)</em>, <em>xml2(v.1.3.6)</em>, <em>renv(v.1.0.3)</em>, <em>minqa(v.1.2.6)</em>, <em>jsonlite(v.1.8.8)</em> and <em>R6(v.2.5.1)</em></p>
+<p><strong>loaded via a namespace (and not attached):</strong> <em>gtable(v.0.3.4)</em>, <em>shape(v.1.4.6)</em>, <em>xfun(v.0.41)</em>, <em>htmlwidgets(v.1.6.4)</em>, <em>lattice(v.0.22-5)</em>, <em>simsurv(v.1.0.0)</em>, <em>vctrs(v.0.6.5)</em>, <em>tools(v.4.4.0)</em>, <em>generics(v.0.1.3)</em>, <em>tibble(v.3.2.1)</em>, <em>fansi(v.1.0.6)</em>, <em>pan(v.1.9)</em>, <em>pkgconfig(v.2.0.3)</em>, <em>jomo(v.2.7-6)</em>, <em>Matrix(v.1.6-4)</em>, <em>assertthat(v.0.2.1)</em>, <em>lifecycle(v.1.0.4)</em>, <em>farver(v.2.1.1)</em>, <em>compiler(v.4.4.0)</em>, <em>stringr(v.1.5.1)</em>, <em>munsell(v.0.5.0)</em>, <em>codetools(v.0.2-19)</em>, <em>sass(v.0.4.8)</em>, <em>htmltools(v.0.5.7)</em>, <em>yaml(v.2.3.8)</em>, <em>glmnet(v.4.1-8)</em>, <em>nloptr(v.2.0.3)</em>, <em>pillar(v.1.9.0)</em>, <em>tidyr(v.1.3.1)</em>, <em>MASS(v.7.3-60)</em>, <em>broom.helpers(v.1.14.0)</em>, <em>sessioninfo(v.1.2.2)</em>, <em>iterators(v.1.0.14)</em>, <em>rpart(v.4.1.23)</em>, <em>boot(v.1.3-28.1)</em>, <em>foreach(v.1.5.2)</em>, <em>mitml(v.0.4-5)</em>, <em>nlme(v.3.1-164)</em>, <em>commonmark(v.1.9.1)</em>, <em>tidyselect(v.1.2.0)</em>, <em>digest(v.0.6.33)</em>, <em>stringi(v.1.8.3)</em>, <em>pander(v.0.6.5)</em>, <em>purrr(v.1.0.2)</em>, <em>labeling(v.0.4.3)</em>, <em>forcats(v.1.0.0)</em>, <em>splines(v.4.4.0)</em>, <em>rprojroot(v.2.0.4)</em>, <em>fastmap(v.1.1.1)</em>, <em>grid(v.4.4.0)</em>, <em>colorspace(v.2.1-0)</em>, <em>cli(v.3.6.2)</em>, <em>magrittr(v.2.0.3)</em>, <em>utf8(v.1.2.4)</em>, <em>broom(v.1.0.5)</em>, <em>withr(v.3.0.0)</em>, <em>scales(v.1.3.0)</em>, <em>backports(v.1.4.1)</em>, <em>bit64(v.4.0.5)</em>, <em>rmarkdown(v.2.25)</em>, <em>nnet(v.7.3-19)</em>, <em>bit(v.4.0.5)</em>, <em>lme4(v.1.1-35.1)</em>, <em>evaluate(v.0.23)</em>, <em>knitr(v.1.45)</em>, <em>markdown(v.1.12)</em>, <em>rlang(v.1.1.2)</em>, <em>Rcpp(v.1.0.12)</em>, <em>glue(v.1.6.2)</em>, <em>xml2(v.1.3.6)</em>, <em>renv(v.1.0.3)</em>, <em>minqa(v.1.2.6)</em>, <em>jsonlite(v.1.8.8)</em> and <em>R6(v.2.5.1)</em></p>
 </div>
 </div>
 </div>
@@ -2638,7 +2076,7 @@ probabilities.</p> </caption>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">options</span>(<span class="st">'repos'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">options</span>(<span class="st">'repos'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <ul>

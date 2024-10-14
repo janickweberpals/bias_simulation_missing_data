@@ -135,6 +135,8 @@ $$wss_{scaled} = \frac{wss - \bar{wss}}{sd_{wss}}$$
 
 ## Step 4: Converting wss to probabilities
 
+::: {.content-visible when-format="pdf"}
+
 ### Option 1: Logistic probabilities based on continuous weighted sum score
 
 The scaled weighted sum scores are then eventually converted into actual probabilities for individual $i$ to have an observed or missing $Z2$. To that end, the `mice::ampute` function provides different  [logistic probability distributions](https://github.com/amices/mice/blob/master/R/ampute.continuous.R#L38):
@@ -240,11 +242,14 @@ ggplot(wss, aes(x = wss, y = pr)) +
 
 
 ### Option 2: Discrete probabilities based on continuous weighted sum score quantiles
+:::
 
-An alternative to using the different logistic probability distributions to map the weighted sum scores to a missingness probablity is to use **discrete probabilities** as described in [Brand (1999, pp. 110-113)](https://repub.eur.nl/pub/19790/990408_BRAND,%20Jacob%20Pieter%20Laurens.pdf). The weighted sum scores of all patients are divided over a certain number of equally sized groups, or quantiles. **An odds value defines the relative probability of each quantile group of becoming incomplete**. In the following example, the weighted sum scores are divided over 4 groups/quantile with the highest quantile having a four-fold odds of having a missing value for $Z2$.
+### Discrete probabilities based on continuous weighted sum score quantiles
+
+An alternative to using the `ampute()` default different logistic probability distributions to map the weighted sum scores to a missingness probablity is to use **discrete probabilities** as described in [Brand (1999, pp. 110-113)](https://repub.eur.nl/pub/19790/990408_BRAND,%20Jacob%20Pieter%20Laurens.pdf). The weighted sum scores of all patients are divided over a certain number of equally sized groups, or quantiles. **An odds value defines the relative probability of each quantile group of becoming incomplete**. In the following example, the weighted sum scores are divided over 4 groups/quantile with the highest quantile having a four-fold odds of having a missing value for $Z2$.
 
 ```{r}
-#| label: fig-odds
+#| label: fig-odds1
 #| fig-cap: "Imposed missingness based on scaled weighted sum score and corresponding quantile membership."
 
 # replace the predictor columns with a 1 or non-zero value
@@ -267,8 +272,8 @@ wss <- cohort |>
   mutate(quantile = ntile(x = wss, n = 4)) |> 
   mutate(isNA = is.na(data_miss$amp$Z2))
 
-ggplot(wss, aes(x = wss, y = quantile, color = factor(isNA))) +
-  geom_point(alpha = 0.3) +
+quantile <- ggplot(wss, aes(x = wss, y = quantile, color = factor(isNA))) +
+  geom_point(alpha = 0.1) +
   labs(
     x = "Standardized weighted sum score (wss)", 
     y = "Quantile",
@@ -277,6 +282,47 @@ ggplot(wss, aes(x = wss, y = quantile, color = factor(isNA))) +
   theme_bw() +
   scale_color_colorblind() +
   theme(legend.position = "top")
+
+quantile
+```
+
+```{r}
+#| label: fig-odds2
+#| fig-cap: "Imposed missingness based on scaled weighted sum score and corresponding missingness probability."
+#| 
+odds_fit <- glm(
+  isNA ~ wss,
+  data = wss,
+  family = "binomial"
+  )
+
+wss <- wss |> 
+   mutate(probabilities = fitted(odds_fit))
+
+probability <- ggplot(wss, aes(x = wss, y = probabilities, color = factor(isNA))) +
+  geom_point(alpha = 0.1) +
+  labs(
+    x = "Standardized weighted sum score (wss)", 
+    y = "Probability",
+    color = "Is NA"
+    ) +
+  theme_bw() +
+  scale_color_colorblind() +
+  theme(legend.position = "top")
+
+probability
+```
+
+
+```{r}
+#| label: fig-odds3
+#| fig-cap: "Combined figures."
+#| fig-width: 8
+#| fig-height: 4
+
+library(cowplot)
+
+plot_grid(quantile, probability)
 ```
 
 ## Session info

@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: public
+  output-dir: doc
   post-render: 
     - update_README.R
 
