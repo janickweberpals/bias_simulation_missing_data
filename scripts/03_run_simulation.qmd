@@ -9,7 +9,7 @@ engine: knitr
 execute:
   keep-md: true # md files are great for checking differences between versions
 params:
-  n_replicates: 2
+  n_replicates: 1000
 ---
 
 
