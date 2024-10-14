@@ -63,10 +63,7 @@ Follow these steps in RStudio to reproduce this study:
     ## │   ├── ps_analysis_mids.R
     ## │   ├── rsimsum_ggplot.R
     ## │   └── run_simulation.R
-    ## ├── index.html
     ## ├── index.qmd
-    ## ├── public
-    ## │   └── site_libs
     ## ├── renv
     ## │   ├── activate.R
     ## │   ├── library
@@ -82,22 +79,7 @@ Follow these steps in RStudio to reproduce this study:
     ## │   ├── 02_missingness_generation_files
     ## │   ├── 03_run_simulation.md
     ## │   ├── 03_run_simulation.qmd
-    ## │   ├── 03_run_simulation_files
-    ## │   ├── 04_simulation_results.md
-    ## │   └── 04_simulation_results_files
-    ## ├── site_libs
-    ## │   ├── bootstrap
-    ## │   ├── clipboard
-    ## │   ├── crosstalk-1.2.1
-    ## │   ├── htmlwidgets-1.6.4
-    ## │   ├── jquery-3.5.1
-    ## │   ├── plotly-binding-4.10.4
-    ## │   ├── plotly-htmlwidgets-css-2.11.1
-    ## │   ├── plotly-main-2.11.1
-    ## │   ├── quarto-html
-    ## │   ├── quarto-nav
-    ## │   ├── quarto-search
-    ## │   └── typedarray-0.1
+    ## │   └── 03_run_simulation_files
     ## └── update_README.R
 
 -   .Rprofile - defines paths, activates `renv`, options for Posit R

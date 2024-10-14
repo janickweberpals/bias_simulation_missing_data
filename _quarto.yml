@@ -1,9 +1,7 @@
 project:
   type: book
   output-dir: doc
-  # post-render: 
-  #   - update_README.R
-
+  
 book:
   title: "A simulation of bias introduced by missing confounder data"
   author: "Janick Weberpals"

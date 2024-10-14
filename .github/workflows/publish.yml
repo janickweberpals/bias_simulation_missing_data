@@ -29,15 +29,18 @@ jobs:
         with:
           cache-version: 1
 
+      # render the quarto book project
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
         with:
           to: html # If set, it will be equivalent to `quarto render --to html`
           path: scripts/ # By default, the current working dir is used i.e `quarto render .`
       
-      - name: Run quarto
+      # copy doc/ to public/ directory to also deploy on GitLab Pages
+      - name: Copy
         run: cp -R doc/ public/
         
+      # deploy
       - name: Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
