@@ -48,6 +48,13 @@ Follow these steps in RStudio to reproduce this study:
     ## ├── README.md
     ## ├── _quarto.yml
     ## ├── cc_bias_simulation.Rproj
+    ## ├── doc
+    ## │   ├── index.html
+    ## │   ├── robots.txt
+    ## │   ├── scripts
+    ## │   ├── search.json
+    ## │   ├── site_libs
+    ## │   └── sitemap.xml
     ## ├── functions
     ## │   ├── format_methods.R
     ## │   ├── generate_NA_cont.R
@@ -56,14 +63,10 @@ Follow these steps in RStudio to reproduce this study:
     ## │   ├── ps_analysis_mids.R
     ## │   ├── rsimsum_ggplot.R
     ## │   └── run_simulation.R
+    ## ├── index.html
     ## ├── index.qmd
     ## ├── public
-    ## │   ├── index.html
-    ## │   ├── robots.txt
-    ## │   ├── scripts
-    ## │   ├── search.json
-    ## │   ├── site_libs
-    ## │   └── sitemap.xml
+    ## │   └── site_libs
     ## ├── renv
     ## │   ├── activate.R
     ## │   ├── library
@@ -71,12 +74,30 @@ Follow these steps in RStudio to reproduce this study:
     ## │   └── staging
     ## ├── renv.lock
     ## ├── scripts
+    ## │   ├── 01_data_generation.html
     ## │   ├── 01_data_generation.qmd
+    ## │   ├── 01_data_generation_files
+    ## │   ├── 02_missingness_generation.html
     ## │   ├── 02_missingness_generation.qmd
+    ## │   ├── 02_missingness_generation_files
+    ## │   ├── 03_run_simulation.md
     ## │   ├── 03_run_simulation.qmd
+    ## │   ├── 03_run_simulation_files
     ## │   ├── 04_simulation_results.md
-    ## │   ├── 04_simulation_results.qmd
     ## │   └── 04_simulation_results_files
+    ## ├── site_libs
+    ## │   ├── bootstrap
+    ## │   ├── clipboard
+    ## │   ├── crosstalk-1.2.1
+    ## │   ├── htmlwidgets-1.6.4
+    ## │   ├── jquery-3.5.1
+    ## │   ├── plotly-binding-4.10.4
+    ## │   ├── plotly-htmlwidgets-css-2.11.1
+    ## │   ├── plotly-main-2.11.1
+    ## │   ├── quarto-html
+    ## │   ├── quarto-nav
+    ## │   ├── quarto-search
+    ## │   └── typedarray-0.1
     ## └── update_README.R
 
 -   .Rprofile - defines paths, activates `renv`, options for Posit R

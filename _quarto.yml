@@ -20,7 +20,6 @@ book:
     - part: Simulation
       chapters:
         - scripts/03_run_simulation.qmd
-        - scripts/04_simulation_results.qmd
 
   reader-mode: true
   repo-url: https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data

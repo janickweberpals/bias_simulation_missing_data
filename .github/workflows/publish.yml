@@ -36,7 +36,7 @@ jobs:
           path: scripts/ # By default, the current working dir is used i.e `quarto render .`
       
       - name: Run quarto
-        run: cp -R doc public/
+        run: cp -R doc/ public/
         
       - name: Publish
         uses: quarto-dev/quarto-actions/publish@v2
