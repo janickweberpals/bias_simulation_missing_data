@@ -1,6 +1,6 @@
 ---
-title: "Simulation script"
-subtitle: "Simulate different scenarios and missingness mitigation approaches"
+title: "Simple de novo simulation"
+subtitle: "Simulation of different simple scenarios and missingness mitigation approaches"
 author: "Janick Weberpals"
 date: "`r Sys.Date()`"
 date-format: long
