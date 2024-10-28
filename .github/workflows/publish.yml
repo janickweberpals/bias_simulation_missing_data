@@ -37,9 +37,9 @@ jobs:
           path: scripts/ # By default, the current working dir is used i.e `quarto render .`
       
       # copy doc/ to public/ directory to also deploy on GitLab Pages
-      - name: Copy
-        run: cp -R docs/ public/
-        
+      # - name: Copy
+      #   run: cp -R docs/ public/
+      #   
       # deploy
       - name: Publish
         uses: quarto-dev/quarto-actions/publish@v2
