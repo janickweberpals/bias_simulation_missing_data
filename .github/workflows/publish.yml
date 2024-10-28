@@ -38,7 +38,7 @@ jobs:
       
       # copy doc/ to public/ directory to also deploy on GitLab Pages
       - name: Copy
-        run: cp -R doc/ public/
+        run: cp -R docs/ public/
         
       # deploy
       - name: Publish
