@@ -36,10 +36,14 @@ jobs:
           to: html # If set, it will be equivalent to `quarto render --to html`
           path: scripts/ # By default, the current working dir is used i.e `quarto render .`
       
-      # copy doc/ to public/ directory to also deploy on GitLab Pages
-      # - name: Copy
-      #   run: cp -R docs/ public/
-      #   
+      - name: Commit results
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m 'Simulation updated' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
+          
       # deploy
       - name: Publish
         uses: quarto-dev/quarto-actions/publish@v2
