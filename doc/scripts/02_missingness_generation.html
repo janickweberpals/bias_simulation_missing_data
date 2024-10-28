@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Janick Weberpals">
-<meta name="dcterms.date" content="2024-10-14">
+<meta name="dcterms.date" content="2024-10-28">
 
 <title>A simulation of bias introduced by missing confounder data - 2&nbsp; Missingness generation</title>
 <style>
@@ -186,13 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../scripts/03_run_simulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Simulation script</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../scripts/04_simulation_results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Simulation results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Simple de novo simulation</span></span></a>
   </div>
 </li>
       </ul>
@@ -242,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 14, 2024</p>
+      <p class="date">October 28, 2024</p>
     </div>
   </div>
   
@@ -280,6 +274,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> X) <span class="sc">|&gt;</span> </span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_difference</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following errors were returned during `add_difference()`:
+✖ For variable `U` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
+  0.2.1) is required.
+✖ For variable `Z2` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
+  0.2.1) is required.
+✖ For variable `c_acei` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
+  0.2.1) is required.
+✖ For variable `c_arb` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
+  0.2.1) is required.
+✖ For variable `c_ed` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
+  0.2.1) is required.
+✖ For variable `c_flu_vaccine` (`X`) and "estimate" statistic: The package
+  "cardx" (&gt;= 0.2.1) is required.
+✖ For variable `c_foot_ulcer` (`X`) and "estimate" statistic: The package
+  "cardx" (&gt;= 0.2.1) is required.
+✖ For variable `c_glaucoma_or_cataract` (`X`) and "estimate" statistic: The
+  package "cardx" (&gt;= 0.2.1) is required.
+✖ For variable `c_gnrc_cnt` (`X`) and "estimate" statistic: The package "cardx"
+  (&gt;= 0.2.1) is required.
+✖ For variable `c_h2ra` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
+  0.2.1) is required.
+✖ For variable `c_ischemic_stroke` (`X`) and "estimate" statistic: The package
+  "cardx" (&gt;= 0.2.1) is required.
+✖ For variable `c_spironolocatone` (`X`) and "estimate" statistic: The package
+  "cardx" (&gt;= 0.2.1) is required.
+✖ For variable `c_statin` (`X`) and "estimate" statistic: The package "cardx"
+  (&gt;= 0.2.1) is required.
+✖ For variable `dem_age` (`X`) and "estimate" statistic: The package "cardx"
+  (&gt;= 0.2.1) is required.</code></pre>
+</div>
 <div class="cell-output-display">
 
 <div id="fjfzcinuri" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -721,114 +746,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #fjfzcinuri .gt_indent_5 {
   text-indent: 25px;
 }
+
+#fjfzcinuri .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#fjfzcinuri div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>
     <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>0</strong>, N = 806<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>0</strong>, N = 806<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>1</strong>, N = 1,694<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>1</strong>, N = 1,694<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Difference</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>"><strong>Difference</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>95% CI</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2,3</sup></span>"><strong>95% CI</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2,3</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="label"><span data-qmd-base64="PHN0cm9uZz5DaGFyYWN0ZXJpc3RpYzwvc3Ryb25nPg=="><span class="gt_from_md"><strong>Characteristic</strong></span></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="stat_1"><span data-qmd-base64="PHN0cm9uZz4wPC9zdHJvbmc+PGJyIC8+Ck4gPSA4MDY="><span class="gt_from_md"><strong>0</strong><br>
+N = 806</span></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="stat_2"><span data-qmd-base64="PHN0cm9uZz4xPC9zdHJvbmc+PGJyIC8+Ck4gPSAxLDY5NA=="><span class="gt_from_md"><strong>1</strong><br>
+N = 1,694</span></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="estimate"><span data-qmd-base64="PHN0cm9uZz5EaWZmZXJlbmNlPC9zdHJvbmc+"><span class="gt_from_md"><strong>Difference</strong></span></span></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr><td headers="label" class="gt_row gt_left">Z2</td>
 <td headers="stat_1" class="gt_row gt_center">0.86 (0.69, 1.02)</td>
 <td headers="stat_2" class="gt_row gt_center">0.81 (0.66, 0.97)</td>
-<td headers="estimate" class="gt_row gt_center">0.04</td>
-<td headers="ci" class="gt_row gt_center">0.02, 0.06</td>
-<td headers="p.value" class="gt_row gt_center">&lt;0.001</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">U</td>
 <td headers="stat_1" class="gt_row gt_center">106 (13%)</td>
 <td headers="stat_2" class="gt_row gt_center">332 (20%)</td>
-<td headers="estimate" class="gt_row gt_center">-6.4%</td>
-<td headers="ci" class="gt_row gt_center">-9.5%, -3.4%</td>
-<td headers="p.value" class="gt_row gt_center">&lt;0.001</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_ed</td>
-<td headers="stat_1" class="gt_row gt_center">0.99 (-0.98, 3.10)</td>
-<td headers="stat_2" class="gt_row gt_center">0.94 (-0.42, 2.34)</td>
-<td headers="estimate" class="gt_row gt_center">0.09</td>
-<td headers="ci" class="gt_row gt_center">-0.14, 0.32</td>
-<td headers="p.value" class="gt_row gt_center">0.5</td></tr>
+<td headers="stat_1" class="gt_row gt_center">0.99 (-0.98, 3.11)</td>
+<td headers="stat_2" class="gt_row gt_center">0.94 (-0.42, 2.35)</td>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_gnrc_cnt</td>
 <td headers="stat_1" class="gt_row gt_center">10.1 (6.3, 13.3)</td>
 <td headers="stat_2" class="gt_row gt_center">11.1 (7.6, 14.4)</td>
-<td headers="estimate" class="gt_row gt_center">-1.2</td>
-<td headers="ci" class="gt_row gt_center">-1.7, -0.80</td>
-<td headers="p.value" class="gt_row gt_center">&lt;0.001</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_flu_vaccine</td>
 <td headers="stat_1" class="gt_row gt_center">517 (64%)</td>
 <td headers="stat_2" class="gt_row gt_center">1,048 (62%)</td>
-<td headers="estimate" class="gt_row gt_center">2.3%</td>
-<td headers="ci" class="gt_row gt_center">-1.9%, 6.4%</td>
-<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_foot_ulcer</td>
 <td headers="stat_1" class="gt_row gt_center">16 (2.0%)</td>
 <td headers="stat_2" class="gt_row gt_center">75 (4.4%)</td>
-<td headers="estimate" class="gt_row gt_center">-2.4%</td>
-<td headers="ci" class="gt_row gt_center">-3.9%, -0.98%</td>
-<td headers="p.value" class="gt_row gt_center">0.003</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_glaucoma_or_cataract</td>
 <td headers="stat_1" class="gt_row gt_center">415 (51%)</td>
 <td headers="stat_2" class="gt_row gt_center">860 (51%)</td>
-<td headers="estimate" class="gt_row gt_center">0.72%</td>
-<td headers="ci" class="gt_row gt_center">-3.6%, 5.0%</td>
-<td headers="p.value" class="gt_row gt_center">0.8</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_ischemic_stroke</td>
 <td headers="stat_1" class="gt_row gt_center">74 (9.2%)</td>
 <td headers="stat_2" class="gt_row gt_center">243 (14%)</td>
-<td headers="estimate" class="gt_row gt_center">-5.2%</td>
-<td headers="ci" class="gt_row gt_center">-7.9%, -2.5%</td>
-<td headers="p.value" class="gt_row gt_center">&lt;0.001</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_h2ra</td>
 <td headers="stat_1" class="gt_row gt_center">65 (8.1%)</td>
 <td headers="stat_2" class="gt_row gt_center">122 (7.2%)</td>
-<td headers="estimate" class="gt_row gt_center">0.86%</td>
-<td headers="ci" class="gt_row gt_center">-1.5%, 3.2%</td>
-<td headers="p.value" class="gt_row gt_center">0.5</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_acei</td>
 <td headers="stat_1" class="gt_row gt_center">270 (33%)</td>
 <td headers="stat_2" class="gt_row gt_center">545 (32%)</td>
-<td headers="estimate" class="gt_row gt_center">1.3%</td>
-<td headers="ci" class="gt_row gt_center">-2.7%, 5.4%</td>
-<td headers="p.value" class="gt_row gt_center">0.5</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_arb</td>
 <td headers="stat_1" class="gt_row gt_center">123 (15%)</td>
 <td headers="stat_2" class="gt_row gt_center">291 (17%)</td>
-<td headers="estimate" class="gt_row gt_center">-1.9%</td>
-<td headers="ci" class="gt_row gt_center">-5.1%, 1.2%</td>
-<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_statin</td>
 <td headers="stat_1" class="gt_row gt_center">476 (59%)</td>
 <td headers="stat_2" class="gt_row gt_center">942 (56%)</td>
-<td headers="estimate" class="gt_row gt_center">3.4%</td>
-<td headers="ci" class="gt_row gt_center">-0.78%, 7.7%</td>
-<td headers="p.value" class="gt_row gt_center">0.11</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_spironolocatone</td>
 <td headers="stat_1" class="gt_row gt_center">14 (1.7%)</td>
 <td headers="stat_2" class="gt_row gt_center">32 (1.9%)</td>
-<td headers="estimate" class="gt_row gt_center">-0.15%</td>
-<td headers="ci" class="gt_row gt_center">-1.4%, 1.1%</td>
-<td headers="p.value" class="gt_row gt_center">&gt;0.9</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">dem_age</td>
 <td headers="stat_1" class="gt_row gt_center">75 (70, 80)</td>
 <td headers="stat_2" class="gt_row gt_center">76 (71, 81)</td>
-<td headers="estimate" class="gt_row gt_center">-0.77</td>
-<td headers="ci" class="gt_row gt_center">-1.4, -0.15</td>
-<td headers="p.value" class="gt_row gt_center">0.014</td></tr>
+<td headers="estimate" class="gt_row gt_center"><br></td></tr>
   </tbody>
   
   <tfoot class="gt_footnotes">
     <tr>
-      <td class="gt_footnote" colspan="6"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Median (IQR); n (%)</td>
-    </tr>
-    <tr>
-      <td class="gt_footnote" colspan="6"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Welch Two Sample t-test; Two sample test for equality of proportions</td>
-    </tr>
-    <tr>
-      <td class="gt_footnote" colspan="6"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>3</sup></span> CI = Confidence Interval</td>
+      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> <span data-qmd-base64="TWVkaWFuIChRMSwgUTMpOyBuICglKQ=="><span class="gt_from_md">Median (Q1, Q3); n (%)</span></span></td>
     </tr>
   </tfoot>
 </table>
@@ -847,40 +847,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define column numbers for pattern and weight determination</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>col_Z2 <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">colnames</span>(cohort) <span class="sc">%in%</span> <span class="st">"Z2"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>col_U <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">colnames</span>(cohort) <span class="sc">%in%</span> <span class="st">"U"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># define missingness pattern</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>default_pattern <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">ncol</span>(cohort))</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>pattern <span class="ot">&lt;-</span> <span class="fu">replace</span>(default_pattern, col_Z2, <span class="dv">0</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">colnames</span>(cohort),</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pattern =</span> pattern</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define column numbers for pattern and weight determination</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>col_Z2 <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">colnames</span>(cohort) <span class="sc">%in%</span> <span class="st">"Z2"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>col_U <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">colnames</span>(cohort) <span class="sc">%in%</span> <span class="st">"U"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># define missingness pattern</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>default_pattern <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">ncol</span>(cohort))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>pattern <span class="ot">&lt;-</span> <span class="fu">replace</span>(default_pattern, col_Z2, <span class="dv">0</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">colnames</span>(cohort),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pattern =</span> pattern</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="tbl-pattern" class="anchored">
 
-<div id="uyrgwnrzys" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uyrgwnrzys table {
+<div id="mnzkitqvft" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mnzkitqvft table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uyrgwnrzys thead, #uyrgwnrzys tbody, #uyrgwnrzys tfoot, #uyrgwnrzys tr, #uyrgwnrzys td, #uyrgwnrzys th {
+#mnzkitqvft thead, #mnzkitqvft tbody, #mnzkitqvft tfoot, #mnzkitqvft tr, #mnzkitqvft td, #mnzkitqvft th {
   border-style: none;
 }
 
-#uyrgwnrzys p {
+#mnzkitqvft p {
   margin: 0;
   padding: 0;
 }
 
-#uyrgwnrzys .gt_table {
+#mnzkitqvft .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -906,12 +906,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#uyrgwnrzys .gt_caption {
+#mnzkitqvft .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uyrgwnrzys .gt_title {
+#mnzkitqvft .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -923,7 +923,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#uyrgwnrzys .gt_subtitle {
+#mnzkitqvft .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -935,7 +935,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#uyrgwnrzys .gt_heading {
+#mnzkitqvft .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -947,13 +947,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#uyrgwnrzys .gt_bottom_border {
+#mnzkitqvft .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uyrgwnrzys .gt_col_headings {
+#mnzkitqvft .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -968,7 +968,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#uyrgwnrzys .gt_col_heading {
+#mnzkitqvft .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -988,7 +988,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#uyrgwnrzys .gt_column_spanner_outer {
+#mnzkitqvft .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1000,15 +1000,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#uyrgwnrzys .gt_column_spanner_outer:first-child {
+#mnzkitqvft .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uyrgwnrzys .gt_column_spanner_outer:last-child {
+#mnzkitqvft .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uyrgwnrzys .gt_column_spanner {
+#mnzkitqvft .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1020,11 +1020,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#uyrgwnrzys .gt_spanner_row {
+#mnzkitqvft .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uyrgwnrzys .gt_group_heading {
+#mnzkitqvft .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1050,7 +1050,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#uyrgwnrzys .gt_empty_group_heading {
+#mnzkitqvft .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1065,15 +1065,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#uyrgwnrzys .gt_from_md > :first-child {
+#mnzkitqvft .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uyrgwnrzys .gt_from_md > :last-child {
+#mnzkitqvft .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uyrgwnrzys .gt_row {
+#mnzkitqvft .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1092,7 +1092,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#uyrgwnrzys .gt_stub {
+#mnzkitqvft .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1105,7 +1105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#uyrgwnrzys .gt_stub_row_group {
+#mnzkitqvft .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1119,15 +1119,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#uyrgwnrzys .gt_row_group_first td {
+#mnzkitqvft .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uyrgwnrzys .gt_row_group_first th {
+#mnzkitqvft .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uyrgwnrzys .gt_summary_row {
+#mnzkitqvft .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1137,16 +1137,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#uyrgwnrzys .gt_first_summary_row {
+#mnzkitqvft .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uyrgwnrzys .gt_first_summary_row.thick {
+#mnzkitqvft .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uyrgwnrzys .gt_last_summary_row {
+#mnzkitqvft .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1156,7 +1156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#uyrgwnrzys .gt_grand_summary_row {
+#mnzkitqvft .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1166,7 +1166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#uyrgwnrzys .gt_first_grand_summary_row {
+#mnzkitqvft .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1176,7 +1176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#uyrgwnrzys .gt_last_grand_summary_row_top {
+#mnzkitqvft .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1186,11 +1186,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#uyrgwnrzys .gt_striped {
+#mnzkitqvft .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uyrgwnrzys .gt_table_body {
+#mnzkitqvft .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1199,7 +1199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#uyrgwnrzys .gt_footnotes {
+#mnzkitqvft .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1213,7 +1213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#uyrgwnrzys .gt_footnote {
+#mnzkitqvft .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1222,7 +1222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#uyrgwnrzys .gt_sourcenotes {
+#mnzkitqvft .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1236,7 +1236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#uyrgwnrzys .gt_sourcenote {
+#mnzkitqvft .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1244,64 +1244,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#uyrgwnrzys .gt_left {
+#mnzkitqvft .gt_left {
   text-align: left;
 }
 
-#uyrgwnrzys .gt_center {
+#mnzkitqvft .gt_center {
   text-align: center;
 }
 
-#uyrgwnrzys .gt_right {
+#mnzkitqvft .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uyrgwnrzys .gt_font_normal {
+#mnzkitqvft .gt_font_normal {
   font-weight: normal;
 }
 
-#uyrgwnrzys .gt_font_bold {
+#mnzkitqvft .gt_font_bold {
   font-weight: bold;
 }
 
-#uyrgwnrzys .gt_font_italic {
+#mnzkitqvft .gt_font_italic {
   font-style: italic;
 }
 
-#uyrgwnrzys .gt_super {
+#mnzkitqvft .gt_super {
   font-size: 65%;
 }
 
-#uyrgwnrzys .gt_footnote_marks {
+#mnzkitqvft .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uyrgwnrzys .gt_asterisk {
+#mnzkitqvft .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uyrgwnrzys .gt_indent_1 {
+#mnzkitqvft .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uyrgwnrzys .gt_indent_2 {
+#mnzkitqvft .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uyrgwnrzys .gt_indent_3 {
+#mnzkitqvft .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uyrgwnrzys .gt_indent_4 {
+#mnzkitqvft .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uyrgwnrzys .gt_indent_5 {
+#mnzkitqvft .gt_indent_5 {
   text-indent: 25px;
+}
+
+#mnzkitqvft .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mnzkitqvft div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;2.1:  <p>Assigned missingness pattern matrix.</p> </caption>
@@ -1363,37 +1372,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>default_weights <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">ncol</span>(cohort))</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the predictor columns with a 1 or non-zero value</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">replace</span>(default_weights, <span class="fu">c</span>(col_Z2, col_U), <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.8</span>))</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">colnames</span>(cohort),</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Weights =</span> weights</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>default_weights <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">ncol</span>(cohort))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the predictor columns with a 1 or non-zero value</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">replace</span>(default_weights, <span class="fu">c</span>(col_Z2, col_U), <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.8</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">colnames</span>(cohort),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Weights =</span> weights</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="tbl-weights" class="anchored">
 
-<div id="ilqxzipqix" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ilqxzipqix table {
+<div id="uwkqiiexoa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uwkqiiexoa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ilqxzipqix thead, #ilqxzipqix tbody, #ilqxzipqix tfoot, #ilqxzipqix tr, #ilqxzipqix td, #ilqxzipqix th {
+#uwkqiiexoa thead, #uwkqiiexoa tbody, #uwkqiiexoa tfoot, #uwkqiiexoa tr, #uwkqiiexoa td, #uwkqiiexoa th {
   border-style: none;
 }
 
-#ilqxzipqix p {
+#uwkqiiexoa p {
   margin: 0;
   padding: 0;
 }
 
-#ilqxzipqix .gt_table {
+#uwkqiiexoa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1419,12 +1428,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#ilqxzipqix .gt_caption {
+#uwkqiiexoa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ilqxzipqix .gt_title {
+#uwkqiiexoa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1436,7 +1445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#ilqxzipqix .gt_subtitle {
+#uwkqiiexoa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1448,7 +1457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#ilqxzipqix .gt_heading {
+#uwkqiiexoa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1460,13 +1469,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ilqxzipqix .gt_bottom_border {
+#uwkqiiexoa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ilqxzipqix .gt_col_headings {
+#uwkqiiexoa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1481,7 +1490,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ilqxzipqix .gt_col_heading {
+#uwkqiiexoa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1501,7 +1510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ilqxzipqix .gt_column_spanner_outer {
+#uwkqiiexoa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1513,15 +1522,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#ilqxzipqix .gt_column_spanner_outer:first-child {
+#uwkqiiexoa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ilqxzipqix .gt_column_spanner_outer:last-child {
+#uwkqiiexoa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ilqxzipqix .gt_column_spanner {
+#uwkqiiexoa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1533,11 +1542,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#ilqxzipqix .gt_spanner_row {
+#uwkqiiexoa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ilqxzipqix .gt_group_heading {
+#uwkqiiexoa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1563,7 +1572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#ilqxzipqix .gt_empty_group_heading {
+#uwkqiiexoa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1578,15 +1587,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#ilqxzipqix .gt_from_md > :first-child {
+#uwkqiiexoa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ilqxzipqix .gt_from_md > :last-child {
+#uwkqiiexoa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ilqxzipqix .gt_row {
+#uwkqiiexoa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1605,7 +1614,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ilqxzipqix .gt_stub {
+#uwkqiiexoa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1618,7 +1627,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ilqxzipqix .gt_stub_row_group {
+#uwkqiiexoa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1632,15 +1641,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#ilqxzipqix .gt_row_group_first td {
+#uwkqiiexoa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ilqxzipqix .gt_row_group_first th {
+#uwkqiiexoa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ilqxzipqix .gt_summary_row {
+#uwkqiiexoa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1650,16 +1659,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ilqxzipqix .gt_first_summary_row {
+#uwkqiiexoa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ilqxzipqix .gt_first_summary_row.thick {
+#uwkqiiexoa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ilqxzipqix .gt_last_summary_row {
+#uwkqiiexoa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1669,7 +1678,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ilqxzipqix .gt_grand_summary_row {
+#uwkqiiexoa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1679,7 +1688,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ilqxzipqix .gt_first_grand_summary_row {
+#uwkqiiexoa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1689,7 +1698,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#ilqxzipqix .gt_last_grand_summary_row_top {
+#uwkqiiexoa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1699,11 +1708,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ilqxzipqix .gt_striped {
+#uwkqiiexoa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ilqxzipqix .gt_table_body {
+#uwkqiiexoa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1712,7 +1721,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ilqxzipqix .gt_footnotes {
+#uwkqiiexoa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1726,7 +1735,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ilqxzipqix .gt_footnote {
+#uwkqiiexoa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1735,7 +1744,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ilqxzipqix .gt_sourcenotes {
+#uwkqiiexoa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1749,7 +1758,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ilqxzipqix .gt_sourcenote {
+#uwkqiiexoa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1757,64 +1766,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ilqxzipqix .gt_left {
+#uwkqiiexoa .gt_left {
   text-align: left;
 }
 
-#ilqxzipqix .gt_center {
+#uwkqiiexoa .gt_center {
   text-align: center;
 }
 
-#ilqxzipqix .gt_right {
+#uwkqiiexoa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ilqxzipqix .gt_font_normal {
+#uwkqiiexoa .gt_font_normal {
   font-weight: normal;
 }
 
-#ilqxzipqix .gt_font_bold {
+#uwkqiiexoa .gt_font_bold {
   font-weight: bold;
 }
 
-#ilqxzipqix .gt_font_italic {
+#uwkqiiexoa .gt_font_italic {
   font-style: italic;
 }
 
-#ilqxzipqix .gt_super {
+#uwkqiiexoa .gt_super {
   font-size: 65%;
 }
 
-#ilqxzipqix .gt_footnote_marks {
+#uwkqiiexoa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ilqxzipqix .gt_asterisk {
+#uwkqiiexoa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ilqxzipqix .gt_indent_1 {
+#uwkqiiexoa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ilqxzipqix .gt_indent_2 {
+#uwkqiiexoa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ilqxzipqix .gt_indent_3 {
+#uwkqiiexoa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ilqxzipqix .gt_indent_4 {
+#uwkqiiexoa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ilqxzipqix .gt_indent_5 {
+#uwkqiiexoa .gt_indent_5 {
   text-indent: 25px;
+}
+
+#uwkqiiexoa .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#uwkqiiexoa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;2.2:  <p>Assigned missingness weights matrix.</p> </caption>
@@ -1890,36 +1908,38 @@ wss_i = w_{k,1} \cdot y_{1,i} + w_{k,2} \cdot y_{2,i} + ... + w_{k,m} \cdot y_{m
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the predictor columns with a 1 or non-zero value</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>odds <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>data_miss <span class="ot">&lt;-</span> mice<span class="sc">::</span><span class="fu">ampute</span>(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> cohort,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop =</span> <span class="fl">0.5</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mech =</span> <span class="st">"MAR"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">patterns =</span> pattern,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> weights,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">bycases =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cont =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">odds =</span> odds</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> cohort <span class="sc">|&gt;</span> </span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wss =</span> <span class="fu">unlist</span>(data_miss<span class="sc">$</span>scores)) <span class="sc">|&gt;</span> </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">quantile =</span> <span class="fu">ntile</span>(<span class="at">x =</span> wss, <span class="at">n =</span> <span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">isNA =</span> <span class="fu">is.na</span>(data_miss<span class="sc">$</span>amp<span class="sc">$</span>Z2))</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wss, <span class="fu">aes</span>(<span class="at">x =</span> wss, <span class="at">y =</span> quantile, <span class="at">color =</span> <span class="fu">factor</span>(isNA))) <span class="sc">+</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Standardized weighted sum score (wss)"</span>, </span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Quantile"</span>,</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Is NA"</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the predictor columns with a 1 or non-zero value</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>odds <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data_miss <span class="ot">&lt;-</span> mice<span class="sc">::</span><span class="fu">ampute</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> cohort,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop =</span> <span class="fl">0.5</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mech =</span> <span class="st">"MAR"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">patterns =</span> pattern,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> weights,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">bycases =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cont =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">odds =</span> odds</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> cohort <span class="sc">|&gt;</span> </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wss =</span> <span class="fu">unlist</span>(data_miss<span class="sc">$</span>scores)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">quantile =</span> <span class="fu">ntile</span>(<span class="at">x =</span> wss, <span class="at">n =</span> <span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">isNA =</span> <span class="fu">is.na</span>(data_miss<span class="sc">$</span>amp<span class="sc">$</span>Z2))</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>quantile <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(wss, <span class="fu">aes</span>(<span class="at">x =</span> wss, <span class="at">y =</span> quantile, <span class="at">color =</span> <span class="fu">factor</span>(isNA))) <span class="sc">+</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Standardized weighted sum score (wss)"</span>, </span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Quantile"</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Is NA"</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>quantile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-odds1" class="quarto-figure quarto-figure-center anchored">
@@ -1933,25 +1953,27 @@ wss_i = w_{k,1} \cdot y_{1,i} + w_{k,2} \cdot y_{2,i} + ... + w_{k,m} \cdot y_{m
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>odds_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  isNA <span class="sc">~</span> wss,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wss,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="st">"binomial"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> wss <span class="sc">|&gt;</span> </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">probabilities =</span> <span class="fu">fitted</span>(odds_fit))</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wss, <span class="fu">aes</span>(<span class="at">x =</span> wss, <span class="at">y =</span> probabilities, <span class="at">color =</span> <span class="fu">factor</span>(quantile))) <span class="sc">+</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Standardized weighted sum score (wss)"</span>, </span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability"</span>,</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Is NA"</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>odds_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  isNA <span class="sc">~</span> wss,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wss,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="st">"binomial"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> wss <span class="sc">|&gt;</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">probabilities =</span> <span class="fu">fitted</span>(odds_fit))</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>probability <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(wss, <span class="fu">aes</span>(<span class="at">x =</span> wss, <span class="at">y =</span> probabilities, <span class="at">color =</span> <span class="fu">factor</span>(isNA))) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Standardized weighted sum score (wss)"</span>, </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Is NA"</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>probability</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-odds2" class="quarto-figure quarto-figure-center anchored">
@@ -1962,11 +1984,43 @@ wss_i = w_{k,1} \cdot y_{1,i} + w_{k,2} \cdot y_{2,i} + ... + w_{k,m} \cdot y_{m
 </div>
 </div>
 </div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'cowplot'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:ggthemes':
+
+    theme_map</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:gt':
+
+    as_gtable</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(quantile, probability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-odds3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="02_missingness_generation_files/figure-html/fig-odds3-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption class="figure-caption">Figure&nbsp;2.3: Combined figures.</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="session-info" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="session-info"><span class="header-section-number">2.6</span> Session info</h2>
-<p>Script runtime: 0.10 minutes.</p>
+<p>Script runtime: 0.04 minutes.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Loaded packages</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Session info</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Repositories</a></li></ul>
 <div class="tab-content">
@@ -1974,7 +2028,7 @@ wss_i = w_{k,1} \cdot y_{1,i} + w_{k,2} \cdot y_{2,i} + ... + w_{k,m} \cdot y_{m
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">subset</span>(<span class="fu">data.frame</span>(sessioninfo<span class="sc">::</span><span class="fu">package_info</span>()), attached<span class="sc">==</span><span class="cn">TRUE</span>, <span class="fu">c</span>(package, loadedversion)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">subset</span>(<span class="fu">data.frame</span>(sessioninfo<span class="sc">::</span><span class="fu">package_info</span>()), attached<span class="sc">==</span><span class="cn">TRUE</span>, <span class="fu">c</span>(package, loadedversion)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
@@ -1994,62 +2048,67 @@ wss_i = w_{k,1} \cdot y_{1,i} + w_{k,2} \cdot y_{2,i} + ... + w_{k,m} \cdot y_{m
 <tr class="odd">
 <td style="text-align: center;"><strong>arrow</strong></td>
 <td style="text-align: center;">arrow</td>
-<td style="text-align: center;">14.0.0.2</td>
+<td style="text-align: center;">17.0.0.1</td>
 </tr>
 <tr class="even">
+<td style="text-align: center;"><strong>cowplot</strong></td>
+<td style="text-align: center;">cowplot</td>
+<td style="text-align: center;">1.1.3</td>
+</tr>
+<tr class="odd">
 <td style="text-align: center;"><strong>dplyr</strong></td>
 <td style="text-align: center;">dplyr</td>
 <td style="text-align: center;">1.1.4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;"><strong>ggplot2</strong></td>
 <td style="text-align: center;">ggplot2</td>
-<td style="text-align: center;">3.4.4</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>ggsurvfit</strong></td>
-<td style="text-align: center;">ggsurvfit</td>
-<td style="text-align: center;">1.0.0</td>
+<td style="text-align: center;">3.5.1</td>
 </tr>
 <tr class="odd">
+<td style="text-align: center;"><strong>ggsurvfit</strong></td>
+<td style="text-align: center;">ggsurvfit</td>
+<td style="text-align: center;">1.1.0</td>
+</tr>
+<tr class="even">
 <td style="text-align: center;"><strong>ggthemes</strong></td>
 <td style="text-align: center;">ggthemes</td>
 <td style="text-align: center;">5.1.0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;"><strong>gt</strong></td>
 <td style="text-align: center;">gt</td>
-<td style="text-align: center;">0.10.1</td>
+<td style="text-align: center;">0.11.1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;"><strong>gtools</strong></td>
 <td style="text-align: center;">gtools</td>
 <td style="text-align: center;">3.9.5</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;"><strong>gtsummary</strong></td>
 <td style="text-align: center;">gtsummary</td>
-<td style="text-align: center;">1.7.2</td>
+<td style="text-align: center;">2.0.3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;"><strong>here</strong></td>
 <td style="text-align: center;">here</td>
 <td style="text-align: center;">1.0.1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;"><strong>mice</strong></td>
 <td style="text-align: center;">mice</td>
 <td style="text-align: center;">3.16.0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;"><strong>survival</strong></td>
 <td style="text-align: center;">survival</td>
-<td style="text-align: center;">3.5-8</td>
+<td style="text-align: center;">3.7-0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;"><strong>tictoc</strong></td>
 <td style="text-align: center;">tictoc</td>
-<td style="text-align: center;">1.2</td>
+<td style="text-align: center;">1.2.1</td>
 </tr>
 </tbody>
 </table>
@@ -2060,15 +2119,15 @@ wss_i = w_{k,1} \cdot y_{1,i} + w_{k,2} \cdot y_{2,i} + ... + w_{k,m} \cdot y_{m
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">sessionInfo</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">sessionInfo</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><strong>R version 4.4.0 (2024-04-24)</strong></p>
 <p><strong>Platform:</strong> aarch64-apple-darwin20</p>
 <p><strong>locale:</strong> en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8</p>
 <p><strong>attached base packages:</strong> <em>stats</em>, <em>graphics</em>, <em>grDevices</em>, <em>datasets</em>, <em>utils</em>, <em>methods</em> and <em>base</em></p>
-<p><strong>other attached packages:</strong> <em>tictoc(v.1.2)</em>, <em>mice(v.3.16.0)</em>, <em>gtools(v.3.9.5)</em>, <em>ggthemes(v.5.1.0)</em>, <em>gtsummary(v.1.7.2)</em>, <em>gt(v.0.10.1)</em>, <em>ggplot2(v.3.4.4)</em>, <em>ggsurvfit(v.1.0.0)</em>, <em>survival(v.3.5-8)</em>, <em>dplyr(v.1.1.4)</em>, <em>arrow(v.14.0.0.2)</em> and <em>here(v.1.0.1)</em></p>
-<p><strong>loaded via a namespace (and not attached):</strong> <em>gtable(v.0.3.4)</em>, <em>shape(v.1.4.6)</em>, <em>xfun(v.0.41)</em>, <em>htmlwidgets(v.1.6.4)</em>, <em>lattice(v.0.22-5)</em>, <em>simsurv(v.1.0.0)</em>, <em>vctrs(v.0.6.5)</em>, <em>tools(v.4.4.0)</em>, <em>generics(v.0.1.3)</em>, <em>tibble(v.3.2.1)</em>, <em>fansi(v.1.0.6)</em>, <em>pan(v.1.9)</em>, <em>pkgconfig(v.2.0.3)</em>, <em>jomo(v.2.7-6)</em>, <em>Matrix(v.1.6-4)</em>, <em>assertthat(v.0.2.1)</em>, <em>lifecycle(v.1.0.4)</em>, <em>farver(v.2.1.1)</em>, <em>compiler(v.4.4.0)</em>, <em>stringr(v.1.5.1)</em>, <em>munsell(v.0.5.0)</em>, <em>codetools(v.0.2-19)</em>, <em>sass(v.0.4.8)</em>, <em>htmltools(v.0.5.7)</em>, <em>yaml(v.2.3.8)</em>, <em>glmnet(v.4.1-8)</em>, <em>nloptr(v.2.0.3)</em>, <em>pillar(v.1.9.0)</em>, <em>tidyr(v.1.3.1)</em>, <em>MASS(v.7.3-60)</em>, <em>broom.helpers(v.1.14.0)</em>, <em>sessioninfo(v.1.2.2)</em>, <em>iterators(v.1.0.14)</em>, <em>rpart(v.4.1.23)</em>, <em>boot(v.1.3-28.1)</em>, <em>foreach(v.1.5.2)</em>, <em>mitml(v.0.4-5)</em>, <em>nlme(v.3.1-164)</em>, <em>commonmark(v.1.9.1)</em>, <em>tidyselect(v.1.2.0)</em>, <em>digest(v.0.6.33)</em>, <em>stringi(v.1.8.3)</em>, <em>pander(v.0.6.5)</em>, <em>purrr(v.1.0.2)</em>, <em>labeling(v.0.4.3)</em>, <em>forcats(v.1.0.0)</em>, <em>splines(v.4.4.0)</em>, <em>rprojroot(v.2.0.4)</em>, <em>fastmap(v.1.1.1)</em>, <em>grid(v.4.4.0)</em>, <em>colorspace(v.2.1-0)</em>, <em>cli(v.3.6.2)</em>, <em>magrittr(v.2.0.3)</em>, <em>utf8(v.1.2.4)</em>, <em>broom(v.1.0.5)</em>, <em>withr(v.3.0.0)</em>, <em>scales(v.1.3.0)</em>, <em>backports(v.1.4.1)</em>, <em>bit64(v.4.0.5)</em>, <em>rmarkdown(v.2.25)</em>, <em>nnet(v.7.3-19)</em>, <em>bit(v.4.0.5)</em>, <em>lme4(v.1.1-35.1)</em>, <em>evaluate(v.0.23)</em>, <em>knitr(v.1.45)</em>, <em>markdown(v.1.12)</em>, <em>rlang(v.1.1.2)</em>, <em>Rcpp(v.1.0.12)</em>, <em>glue(v.1.6.2)</em>, <em>xml2(v.1.3.6)</em>, <em>renv(v.1.0.3)</em>, <em>minqa(v.1.2.6)</em>, <em>jsonlite(v.1.8.8)</em> and <em>R6(v.2.5.1)</em></p>
+<p><strong>other attached packages:</strong> <em>cowplot(v.1.1.3)</em>, <em>tictoc(v.1.2.1)</em>, <em>mice(v.3.16.0)</em>, <em>gtools(v.3.9.5)</em>, <em>ggthemes(v.5.1.0)</em>, <em>gtsummary(v.2.0.3)</em>, <em>gt(v.0.11.1)</em>, <em>ggplot2(v.3.5.1)</em>, <em>ggsurvfit(v.1.1.0)</em>, <em>survival(v.3.7-0)</em>, <em>dplyr(v.1.1.4)</em>, <em>arrow(v.17.0.0.1)</em> and <em>here(v.1.0.1)</em></p>
+<p><strong>loaded via a namespace (and not attached):</strong> <em>gtable(v.0.3.5)</em>, <em>shape(v.1.4.6.1)</em>, <em>xfun(v.0.48)</em>, <em>htmlwidgets(v.1.6.4)</em>, <em>lattice(v.0.22-6)</em>, <em>simsurv(v.1.0.0)</em>, <em>vctrs(v.0.6.5)</em>, <em>tools(v.4.4.0)</em>, <em>generics(v.0.1.3)</em>, <em>tibble(v.3.2.1)</em>, <em>fansi(v.1.0.6)</em>, <em>pan(v.1.9)</em>, <em>pkgconfig(v.2.0.3)</em>, <em>jomo(v.2.7-6)</em>, <em>Matrix(v.1.7-0)</em>, <em>assertthat(v.0.2.1)</em>, <em>lifecycle(v.1.0.4)</em>, <em>farver(v.2.1.2)</em>, <em>compiler(v.4.4.0)</em>, <em>stringr(v.1.5.1)</em>, <em>munsell(v.0.5.1)</em>, <em>codetools(v.0.2-20)</em>, <em>sass(v.0.4.9)</em>, <em>htmltools(v.0.5.8.1)</em>, <em>yaml(v.2.3.10)</em>, <em>glmnet(v.4.1-8)</em>, <em>nloptr(v.2.1.1)</em>, <em>pillar(v.1.9.0)</em>, <em>tidyr(v.1.3.1)</em>, <em>MASS(v.7.3-61)</em>, <em>sessioninfo(v.1.2.2)</em>, <em>iterators(v.1.0.14)</em>, <em>rpart(v.4.1.23)</em>, <em>boot(v.1.3-31)</em>, <em>foreach(v.1.5.2)</em>, <em>mitml(v.0.4-5)</em>, <em>nlme(v.3.1-166)</em>, <em>commonmark(v.1.9.2)</em>, <em>tidyselect(v.1.2.1)</em>, <em>digest(v.0.6.37)</em>, <em>stringi(v.1.8.4)</em>, <em>pander(v.0.6.5)</em>, <em>purrr(v.1.0.2)</em>, <em>labeling(v.0.4.3)</em>, <em>splines(v.4.4.0)</em>, <em>rprojroot(v.2.0.4)</em>, <em>fastmap(v.1.2.0)</em>, <em>grid(v.4.4.0)</em>, <em>colorspace(v.2.1-1)</em>, <em>cli(v.3.6.3)</em>, <em>magrittr(v.2.0.3)</em>, <em>base64enc(v.0.1-3)</em>, <em>cards(v.0.3.0)</em>, <em>utf8(v.1.2.4)</em>, <em>broom(v.1.0.7)</em>, <em>withr(v.3.0.1)</em>, <em>scales(v.1.3.0)</em>, <em>backports(v.1.5.0)</em>, <em>bit64(v.4.5.2)</em>, <em>rmarkdown(v.2.28)</em>, <em>nnet(v.7.3-19)</em>, <em>bit(v.4.5.0)</em>, <em>lme4(v.1.1-35.5)</em>, <em>evaluate(v.1.0.1)</em>, <em>knitr(v.1.48)</em>, <em>markdown(v.1.13)</em>, <em>rlang(v.1.1.4)</em>, <em>Rcpp(v.1.0.13)</em>, <em>glue(v.1.8.0)</em>, <em>xml2(v.1.3.6)</em>, <em>renv(v.1.0.3)</em>, <em>minqa(v.1.2.8)</em>, <em>jsonlite(v.1.8.9)</em> and <em>R6(v.2.5.1)</em></p>
 </div>
 </div>
 </div>
@@ -2076,7 +2135,7 @@ wss_i = w_{k,1} \cdot y_{1,i} + w_{k,2} \cdot y_{2,i} + ... + w_{k,m} \cdot y_{m
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">options</span>(<span class="st">'repos'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">options</span>(<span class="st">'repos'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <ul>
@@ -2365,7 +2424,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../scripts/03_run_simulation.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Simulation script</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Simple de novo simulation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
