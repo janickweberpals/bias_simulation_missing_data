@@ -2,24 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<<<<<<< HEAD
 <meta name="generator" content="quarto-1.3.433">
-=======
-<meta name="generator" content="quarto-1.5.57">
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Janick Weberpals">
-<<<<<<< HEAD
 <meta name="dcterms.date" content="2024-11-01">
 
 <title>A simulation of bias introduced by missing confounder data - 2&nbsp; Missingness generation</title>
-=======
-<meta name="dcterms.date" content="2024-10-28">
-
-<title>2&nbsp; Missingness generation – A simulation of bias introduced by missing confounder data</title>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -34,11 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-<<<<<<< HEAD
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-=======
-pre > code.sourceCode > span { line-height: 1.25; }
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -49,11 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-<<<<<<< HEAD
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-=======
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -101,17 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-<<<<<<< HEAD
   "limit": 20,
-=======
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,52 +92,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-<<<<<<< HEAD
-=======
-    "search-text-placeholder": "",
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
-<<<<<<< HEAD
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-=======
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </head>
 
 <body class="nav-sidebar floating">
@@ -174,7 +109,6 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-<<<<<<< HEAD
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -182,15 +116,6 @@ window.Quarto = {
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-=======
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../scripts/01_data_generation.html">Data generation background</a></li><li class="breadcrumb-item"><a href="../scripts/02_missingness_generation.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Missingness generation</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -199,20 +124,12 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-<<<<<<< HEAD
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-=======
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">A simulation of bias introduced by missing confounder data</a> 
         <div class="sidebar-tools-main">
-<<<<<<< HEAD
     <a href="https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
-=======
-    <a href="https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -236,15 +153,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-<<<<<<< HEAD
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Data generation background</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-=======
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Data generation background</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -265,15 +176,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-<<<<<<< HEAD
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">Simulation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-=======
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Simulation</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -289,11 +194,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<<<<<<< HEAD
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
-=======
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -310,20 +211,12 @@ window.Quarto = {
   </ul></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info"><span class="header-section-number">2.6</span> Session info</a></li>
   </ul>
-<<<<<<< HEAD
 <div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
-=======
-<div class="toc-actions"><ul><li><a href="https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<<<<<<< HEAD
 <header id="title-block-header" class="quarto-title-block default">
-=======
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../scripts/01_data_generation.html">Data generation background</a></li><li class="breadcrumb-item"><a href="../scripts/02_missingness_generation.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Missingness generation</span></a></li></ol></nav>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Missingness generation</span></h1>
 <p class="subtitle lead">Details on how <code>mice::ampute</code> imposes missingness</p>
@@ -331,11 +224,7 @@ window.Quarto = {
 
 
 
-<<<<<<< HEAD
 <div class="quarto-title-meta">
-=======
-<div class="quarto-title-meta column-body">
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -347,11 +236,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-<<<<<<< HEAD
       <p class="date">November 1, 2024</p>
-=======
-      <p class="date">October 28, 2024</p>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
     </div>
   </div>
   
@@ -359,15 +244,8 @@ window.Quarto = {
   </div>
   
 
-<<<<<<< HEAD
 </header>
 
-=======
-
-</header>
-
-
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 <section id="objective" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="objective"><span class="header-section-number">2.1</span> Objective</h2>
 <p>In this section, we detail the process with which the <code>mice::ampute</code> function is used to impose missingness on one or multiple pre-specified variables. For this example, let…</p>
@@ -379,13 +257,8 @@ window.Quarto = {
 </ul>
 <p>We also simulate all other covariates of the <strong>substantive model</strong> with their approximate distributions as observed in the empirical claims-EHR linked dataset.</p>
 <div class="cell">
-<<<<<<< HEAD
 <details>
 <summary>Code</summary>
-=======
-<details class="code-fold">
-<summary>Show the code</summary>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"functions"</span>, <span class="st">"generate_data.R"</span>))</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cohort <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(</span>
@@ -401,43 +274,8 @@ window.Quarto = {
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> X) <span class="sc">|&gt;</span> </span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_difference</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<<<<<<< HEAD
-<div class="cell-output cell-output-stderr">
-<pre><code>The following errors were returned during `add_difference()`:
-✖ For variable `U` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
-  0.2.1) is required.
-✖ For variable `Z2` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
-  0.2.1) is required.
-✖ For variable `c_acei` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
-  0.2.1) is required.
-✖ For variable `c_arb` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
-  0.2.1) is required.
-✖ For variable `c_ed` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
-  0.2.1) is required.
-✖ For variable `c_flu_vaccine` (`X`) and "estimate" statistic: The package
-  "cardx" (&gt;= 0.2.1) is required.
-✖ For variable `c_foot_ulcer` (`X`) and "estimate" statistic: The package
-  "cardx" (&gt;= 0.2.1) is required.
-✖ For variable `c_glaucoma_or_cataract` (`X`) and "estimate" statistic: The
-  package "cardx" (&gt;= 0.2.1) is required.
-✖ For variable `c_gnrc_cnt` (`X`) and "estimate" statistic: The package "cardx"
-  (&gt;= 0.2.1) is required.
-✖ For variable `c_h2ra` (`X`) and "estimate" statistic: The package "cardx" (&gt;=
-  0.2.1) is required.
-✖ For variable `c_ischemic_stroke` (`X`) and "estimate" statistic: The package
-  "cardx" (&gt;= 0.2.1) is required.
-✖ For variable `c_spironolocatone` (`X`) and "estimate" statistic: The package
-  "cardx" (&gt;= 0.2.1) is required.
-✖ For variable `c_statin` (`X`) and "estimate" statistic: The package "cardx"
-  (&gt;= 0.2.1) is required.
-✖ For variable `dem_age` (`X`) and "estimate" statistic: The package "cardx"
-  (&gt;= 0.2.1) is required.</code></pre>
-</div>
 <div class="cell-output-display">
 
-=======
-<div class="cell-output-display">
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 <div id="fjfzcinuri" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#fjfzcinuri table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -877,235 +715,117 @@ window.Quarto = {
 #fjfzcinuri .gt_indent_5 {
   text-indent: 25px;
 }
-<<<<<<< HEAD
-
-#fjfzcinuri .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#fjfzcinuri div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>
     <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="label"><span data-qmd-base64="PHN0cm9uZz5DaGFyYWN0ZXJpc3RpYzwvc3Ryb25nPg=="><span class="gt_from_md"><strong>Characteristic</strong></span></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="stat_1"><span data-qmd-base64="PHN0cm9uZz4wPC9zdHJvbmc+PGJyIC8+Ck4gPSA4MDY="><span class="gt_from_md"><strong>0</strong><br>
-N = 806</span></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="stat_2"><span data-qmd-base64="PHN0cm9uZz4xPC9zdHJvbmc+PGJyIC8+Ck4gPSAxLDY5NA=="><span class="gt_from_md"><strong>1</strong><br>
-N = 1,694</span></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="estimate"><span data-qmd-base64="PHN0cm9uZz5EaWZmZXJlbmNlPC9zdHJvbmc+"><span class="gt_from_md"><strong>Difference</strong></span></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>0</strong>, N = 806<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>0</strong>, N = 806<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>1</strong>, N = 1,694<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>1</strong>, N = 1,694<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Difference</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>"><strong>Difference</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>95% CI</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2,3</sup></span>"><strong>95% CI</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2,3</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr><td headers="label" class="gt_row gt_left">Z2</td>
 <td headers="stat_1" class="gt_row gt_center">0.86 (0.69, 1.02)</td>
 <td headers="stat_2" class="gt_row gt_center">0.81 (0.66, 0.97)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">0.04</td>
+<td headers="ci" class="gt_row gt_center">0.02, 0.06</td>
+<td headers="p.value" class="gt_row gt_center">&lt;0.001</td></tr>
     <tr><td headers="label" class="gt_row gt_left">U</td>
 <td headers="stat_1" class="gt_row gt_center">106 (13%)</td>
 <td headers="stat_2" class="gt_row gt_center">332 (20%)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">-6.4%</td>
+<td headers="ci" class="gt_row gt_center">-9.5%, -3.4%</td>
+<td headers="p.value" class="gt_row gt_center">&lt;0.001</td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_ed</td>
-<td headers="stat_1" class="gt_row gt_center">0.99 (-0.98, 3.11)</td>
-<td headers="stat_2" class="gt_row gt_center">0.94 (-0.42, 2.35)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="stat_1" class="gt_row gt_center">0.99 (-0.98, 3.10)</td>
+<td headers="stat_2" class="gt_row gt_center">0.94 (-0.42, 2.34)</td>
+<td headers="estimate" class="gt_row gt_center">0.09</td>
+<td headers="ci" class="gt_row gt_center">-0.14, 0.32</td>
+<td headers="p.value" class="gt_row gt_center">0.5</td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_gnrc_cnt</td>
 <td headers="stat_1" class="gt_row gt_center">10.1 (6.3, 13.3)</td>
 <td headers="stat_2" class="gt_row gt_center">11.1 (7.6, 14.4)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">-1.2</td>
+<td headers="ci" class="gt_row gt_center">-1.7, -0.80</td>
+<td headers="p.value" class="gt_row gt_center">&lt;0.001</td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_flu_vaccine</td>
 <td headers="stat_1" class="gt_row gt_center">517 (64%)</td>
 <td headers="stat_2" class="gt_row gt_center">1,048 (62%)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">2.3%</td>
+<td headers="ci" class="gt_row gt_center">-1.9%, 6.4%</td>
+<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_foot_ulcer</td>
 <td headers="stat_1" class="gt_row gt_center">16 (2.0%)</td>
 <td headers="stat_2" class="gt_row gt_center">75 (4.4%)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">-2.4%</td>
+<td headers="ci" class="gt_row gt_center">-3.9%, -0.98%</td>
+<td headers="p.value" class="gt_row gt_center">0.003</td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_glaucoma_or_cataract</td>
 <td headers="stat_1" class="gt_row gt_center">415 (51%)</td>
 <td headers="stat_2" class="gt_row gt_center">860 (51%)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">0.72%</td>
+<td headers="ci" class="gt_row gt_center">-3.6%, 5.0%</td>
+<td headers="p.value" class="gt_row gt_center">0.8</td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_ischemic_stroke</td>
 <td headers="stat_1" class="gt_row gt_center">74 (9.2%)</td>
 <td headers="stat_2" class="gt_row gt_center">243 (14%)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">-5.2%</td>
+<td headers="ci" class="gt_row gt_center">-7.9%, -2.5%</td>
+<td headers="p.value" class="gt_row gt_center">&lt;0.001</td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_h2ra</td>
 <td headers="stat_1" class="gt_row gt_center">65 (8.1%)</td>
 <td headers="stat_2" class="gt_row gt_center">122 (7.2%)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">0.86%</td>
+<td headers="ci" class="gt_row gt_center">-1.5%, 3.2%</td>
+<td headers="p.value" class="gt_row gt_center">0.5</td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_acei</td>
 <td headers="stat_1" class="gt_row gt_center">270 (33%)</td>
 <td headers="stat_2" class="gt_row gt_center">545 (32%)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">1.3%</td>
+<td headers="ci" class="gt_row gt_center">-2.7%, 5.4%</td>
+<td headers="p.value" class="gt_row gt_center">0.5</td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_arb</td>
 <td headers="stat_1" class="gt_row gt_center">123 (15%)</td>
 <td headers="stat_2" class="gt_row gt_center">291 (17%)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">-1.9%</td>
+<td headers="ci" class="gt_row gt_center">-5.1%, 1.2%</td>
+<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_statin</td>
 <td headers="stat_1" class="gt_row gt_center">476 (59%)</td>
 <td headers="stat_2" class="gt_row gt_center">942 (56%)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">3.4%</td>
+<td headers="ci" class="gt_row gt_center">-0.78%, 7.7%</td>
+<td headers="p.value" class="gt_row gt_center">0.11</td></tr>
     <tr><td headers="label" class="gt_row gt_left">c_spironolocatone</td>
 <td headers="stat_1" class="gt_row gt_center">14 (1.7%)</td>
 <td headers="stat_2" class="gt_row gt_center">32 (1.9%)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">-0.15%</td>
+<td headers="ci" class="gt_row gt_center">-1.4%, 1.1%</td>
+<td headers="p.value" class="gt_row gt_center">&gt;0.9</td></tr>
     <tr><td headers="label" class="gt_row gt_left">dem_age</td>
 <td headers="stat_1" class="gt_row gt_center">75 (70, 80)</td>
 <td headers="stat_2" class="gt_row gt_center">76 (71, 81)</td>
-<td headers="estimate" class="gt_row gt_center"><br></td></tr>
+<td headers="estimate" class="gt_row gt_center">-0.77</td>
+<td headers="ci" class="gt_row gt_center">-1.4, -0.15</td>
+<td headers="p.value" class="gt_row gt_center">0.014</td></tr>
   </tbody>
   
   <tfoot class="gt_footnotes">
     <tr>
-      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> <span data-qmd-base64="TWVkaWFuIChRMSwgUTMpOyBuICglKQ=="><span class="gt_from_md">Median (Q1, Q3); n (%)</span></span></td>
+      <td class="gt_footnote" colspan="6"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Median (IQR); n (%)</td>
+    </tr>
+    <tr>
+      <td class="gt_footnote" colspan="6"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Welch Two Sample t-test; Two sample test for equality of proportions</td>
+    </tr>
+    <tr>
+      <td class="gt_footnote" colspan="6"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>3</sup></span> CI = Confidence Interval</td>
     </tr>
   </tfoot>
 </table>
-=======
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
-<th id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
-<th id="<strong>0</strong>, N = 806<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>0</strong>, N = 806<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-<th id="<strong>1</strong>, N = 1,694<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>1</strong>, N = 1,694<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-<th id="<strong>Difference</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Difference</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
-<th id="<strong>95% CI</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2,3</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>95% CI</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2,3</sup></span></th>
-<th id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Z2</td>
-<td class="gt_row gt_center" headers="stat_1">0.86 (0.69, 1.02)</td>
-<td class="gt_row gt_center" headers="stat_2">0.81 (0.66, 0.97)</td>
-<td class="gt_row gt_center" headers="estimate">0.04</td>
-<td class="gt_row gt_center" headers="ci">0.02, 0.06</td>
-<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">U</td>
-<td class="gt_row gt_center" headers="stat_1">106 (13%)</td>
-<td class="gt_row gt_center" headers="stat_2">332 (20%)</td>
-<td class="gt_row gt_center" headers="estimate">-6.4%</td>
-<td class="gt_row gt_center" headers="ci">-9.5%, -3.4%</td>
-<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">c_ed</td>
-<td class="gt_row gt_center" headers="stat_1">0.99 (-0.98, 3.10)</td>
-<td class="gt_row gt_center" headers="stat_2">0.94 (-0.42, 2.34)</td>
-<td class="gt_row gt_center" headers="estimate">0.09</td>
-<td class="gt_row gt_center" headers="ci">-0.14, 0.32</td>
-<td class="gt_row gt_center" headers="p.value">0.5</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">c_gnrc_cnt</td>
-<td class="gt_row gt_center" headers="stat_1">10.1 (6.3, 13.3)</td>
-<td class="gt_row gt_center" headers="stat_2">11.1 (7.6, 14.4)</td>
-<td class="gt_row gt_center" headers="estimate">-1.2</td>
-<td class="gt_row gt_center" headers="ci">-1.7, -0.80</td>
-<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">c_flu_vaccine</td>
-<td class="gt_row gt_center" headers="stat_1">517 (64%)</td>
-<td class="gt_row gt_center" headers="stat_2">1,048 (62%)</td>
-<td class="gt_row gt_center" headers="estimate">2.3%</td>
-<td class="gt_row gt_center" headers="ci">-1.9%, 6.4%</td>
-<td class="gt_row gt_center" headers="p.value">0.3</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">c_foot_ulcer</td>
-<td class="gt_row gt_center" headers="stat_1">16 (2.0%)</td>
-<td class="gt_row gt_center" headers="stat_2">75 (4.4%)</td>
-<td class="gt_row gt_center" headers="estimate">-2.4%</td>
-<td class="gt_row gt_center" headers="ci">-3.9%, -0.98%</td>
-<td class="gt_row gt_center" headers="p.value">0.003</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">c_glaucoma_or_cataract</td>
-<td class="gt_row gt_center" headers="stat_1">415 (51%)</td>
-<td class="gt_row gt_center" headers="stat_2">860 (51%)</td>
-<td class="gt_row gt_center" headers="estimate">0.72%</td>
-<td class="gt_row gt_center" headers="ci">-3.6%, 5.0%</td>
-<td class="gt_row gt_center" headers="p.value">0.8</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">c_ischemic_stroke</td>
-<td class="gt_row gt_center" headers="stat_1">74 (9.2%)</td>
-<td class="gt_row gt_center" headers="stat_2">243 (14%)</td>
-<td class="gt_row gt_center" headers="estimate">-5.2%</td>
-<td class="gt_row gt_center" headers="ci">-7.9%, -2.5%</td>
-<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">c_h2ra</td>
-<td class="gt_row gt_center" headers="stat_1">65 (8.1%)</td>
-<td class="gt_row gt_center" headers="stat_2">122 (7.2%)</td>
-<td class="gt_row gt_center" headers="estimate">0.86%</td>
-<td class="gt_row gt_center" headers="ci">-1.5%, 3.2%</td>
-<td class="gt_row gt_center" headers="p.value">0.5</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">c_acei</td>
-<td class="gt_row gt_center" headers="stat_1">270 (33%)</td>
-<td class="gt_row gt_center" headers="stat_2">545 (32%)</td>
-<td class="gt_row gt_center" headers="estimate">1.3%</td>
-<td class="gt_row gt_center" headers="ci">-2.7%, 5.4%</td>
-<td class="gt_row gt_center" headers="p.value">0.5</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">c_arb</td>
-<td class="gt_row gt_center" headers="stat_1">123 (15%)</td>
-<td class="gt_row gt_center" headers="stat_2">291 (17%)</td>
-<td class="gt_row gt_center" headers="estimate">-1.9%</td>
-<td class="gt_row gt_center" headers="ci">-5.1%, 1.2%</td>
-<td class="gt_row gt_center" headers="p.value">0.3</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">c_statin</td>
-<td class="gt_row gt_center" headers="stat_1">476 (59%)</td>
-<td class="gt_row gt_center" headers="stat_2">942 (56%)</td>
-<td class="gt_row gt_center" headers="estimate">3.4%</td>
-<td class="gt_row gt_center" headers="ci">-0.78%, 7.7%</td>
-<td class="gt_row gt_center" headers="p.value">0.11</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">c_spironolocatone</td>
-<td class="gt_row gt_center" headers="stat_1">14 (1.7%)</td>
-<td class="gt_row gt_center" headers="stat_2">32 (1.9%)</td>
-<td class="gt_row gt_center" headers="estimate">-0.15%</td>
-<td class="gt_row gt_center" headers="ci">-1.4%, 1.1%</td>
-<td class="gt_row gt_center" headers="p.value">&gt;0.9</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">dem_age</td>
-<td class="gt_row gt_center" headers="stat_1">75 (70, 80)</td>
-<td class="gt_row gt_center" headers="stat_2">76 (71, 81)</td>
-<td class="gt_row gt_center" headers="estimate">-0.77</td>
-<td class="gt_row gt_center" headers="ci">-1.4, -0.15</td>
-<td class="gt_row gt_center" headers="p.value">0.014</td>
-</tr>
-</tbody><tfoot class="gt_footnotes">
-<tr class="odd">
-<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Median (IQR); n (%)</td>
-</tr>
-<tr class="even">
-<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Welch Two Sample t-test; Two sample test for equality of proportions</td>
-</tr>
-<tr class="odd">
-<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>3</sup></span> CI = Confidence Interval</td>
-</tr>
-</tfoot>
-
-</table>
-
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </div>
 </div>
 </div>
@@ -1119,31 +839,8 @@ N = 1,694</span></span><span class="gt_footnote_marks" style="white-space:nowrap
 <h2 data-number="2.2" class="anchored" data-anchor-id="step-1-assigning-a-missingness-pattern"><span class="header-section-number">2.2</span> Step 1: Assigning a missingness pattern</h2>
 <p>In a first step, we assign the missingness pattern. To that end, we create a vector with the length of the number of covariates that denotes which covariates should be become partially missing (denoted by a value of 0) and which should remain complete (denoted by a value of 1).</p>
 <div class="cell">
-<<<<<<< HEAD
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define column numbers for pattern and weight determination</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>col_Z2 <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">colnames</span>(cohort) <span class="sc">%in%</span> <span class="st">"Z2"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>col_U <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">colnames</span>(cohort) <span class="sc">%in%</span> <span class="st">"U"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># define missingness pattern</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>default_pattern <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">ncol</span>(cohort))</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>pattern <span class="ot">&lt;-</span> <span class="fu">replace</span>(default_pattern, col_Z2, <span class="dv">0</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">colnames</span>(cohort),</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pattern =</span> pattern</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div id="tbl-pattern" class="anchored">
-
-<div id="mnzkitqvft" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mnzkitqvft table {
-=======
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define column numbers for pattern and weight determination</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>col_Z2 <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">colnames</span>(cohort) <span class="sc">%in%</span> <span class="st">"Z2"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>col_U <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">colnames</span>(cohort) <span class="sc">%in%</span> <span class="st">"U"</span>)</span>
@@ -1158,43 +855,26 @@ N = 1,694</span></span><span class="gt_footnote_marks" style="white-space:nowrap
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="tbl-pattern" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pattern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.1: Assigned missingness pattern matrix.
-</figcaption>
-<div aria-describedby="tbl-pattern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
+<div id="tbl-pattern" class="anchored">
+
 <div id="uyrgwnrzys" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#uyrgwnrzys table {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft thead, #mnzkitqvft tbody, #mnzkitqvft tfoot, #mnzkitqvft tr, #mnzkitqvft td, #mnzkitqvft th {
-  border-style: none;
-}
-
-#mnzkitqvft p {
-=======
 #uyrgwnrzys thead, #uyrgwnrzys tbody, #uyrgwnrzys tfoot, #uyrgwnrzys tr, #uyrgwnrzys td, #uyrgwnrzys th {
   border-style: none;
 }
 
 #uyrgwnrzys p {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   margin: 0;
   padding: 0;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_table {
-=======
 #uyrgwnrzys .gt_table {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1220,20 +900,12 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   border-left-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_caption {
-=======
 #uyrgwnrzys .gt_caption {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_title {
-=======
 #uyrgwnrzys .gt_title {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1245,11 +917,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   border-bottom-width: 0;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_subtitle {
-=======
 #uyrgwnrzys .gt_subtitle {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1261,11 +929,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   border-top-width: 0;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_heading {
-=======
 #uyrgwnrzys .gt_heading {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1277,21 +941,13 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   border-right-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_bottom_border {
-=======
 #uyrgwnrzys .gt_bottom_border {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_col_headings {
-=======
 #uyrgwnrzys .gt_col_headings {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1306,11 +962,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   border-right-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_col_heading {
-=======
 #uyrgwnrzys .gt_col_heading {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1330,11 +982,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   overflow-x: hidden;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_column_spanner_outer {
-=======
 #uyrgwnrzys .gt_column_spanner_outer {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1346,17 +994,6 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   padding-right: 4px;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#mnzkitqvft .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#mnzkitqvft .gt_column_spanner {
-=======
 #uyrgwnrzys .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
@@ -1366,7 +1003,6 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
 }
 
 #uyrgwnrzys .gt_column_spanner {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1378,19 +1014,11 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   width: 100%;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#mnzkitqvft .gt_group_heading {
-=======
 #uyrgwnrzys .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
 #uyrgwnrzys .gt_group_heading {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1416,11 +1044,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   text-align: left;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_empty_group_heading {
-=======
 #uyrgwnrzys .gt_empty_group_heading {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1435,17 +1059,6 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   vertical-align: middle;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#mnzkitqvft .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#mnzkitqvft .gt_row {
-=======
 #uyrgwnrzys .gt_from_md > :first-child {
   margin-top: 0;
 }
@@ -1455,7 +1068,6 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
 }
 
 #uyrgwnrzys .gt_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1474,11 +1086,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   overflow-x: hidden;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_stub {
-=======
 #uyrgwnrzys .gt_stub {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1491,11 +1099,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   padding-right: 5px;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_stub_row_group {
-=======
 #uyrgwnrzys .gt_stub_row_group {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1509,17 +1113,6 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   vertical-align: top;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#mnzkitqvft .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#mnzkitqvft .gt_summary_row {
-=======
 #uyrgwnrzys .gt_row_group_first td {
   border-top-width: 2px;
 }
@@ -1529,7 +1122,6 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
 }
 
 #uyrgwnrzys .gt_summary_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1539,28 +1131,16 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   padding-right: 5px;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_first_summary_row {
-=======
 #uyrgwnrzys .gt_first_summary_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#mnzkitqvft .gt_last_summary_row {
-=======
 #uyrgwnrzys .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
 #uyrgwnrzys .gt_last_summary_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1570,11 +1150,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   border-bottom-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_grand_summary_row {
-=======
 #uyrgwnrzys .gt_grand_summary_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1584,11 +1160,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   padding-right: 5px;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_first_grand_summary_row {
-=======
 #uyrgwnrzys .gt_first_grand_summary_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1598,11 +1170,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   border-top-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_last_grand_summary_row_top {
-=======
 #uyrgwnrzys .gt_last_grand_summary_row_top {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1612,19 +1180,11 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   border-bottom-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#mnzkitqvft .gt_table_body {
-=======
 #uyrgwnrzys .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
 #uyrgwnrzys .gt_table_body {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1633,11 +1193,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   border-bottom-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_footnotes {
-=======
 #uyrgwnrzys .gt_footnotes {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1651,11 +1207,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   border-right-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_footnote {
-=======
 #uyrgwnrzys .gt_footnote {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1664,11 +1216,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   padding-right: 5px;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_sourcenotes {
-=======
 #uyrgwnrzys .gt_sourcenotes {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1682,11 +1230,7 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   border-right-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_sourcenote {
-=======
 #uyrgwnrzys .gt_sourcenote {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1694,17 +1238,6 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
   padding-right: 5px;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_left {
-  text-align: left;
-}
-
-#mnzkitqvft .gt_center {
-  text-align: center;
-}
-
-#mnzkitqvft .gt_right {
-=======
 #uyrgwnrzys .gt_left {
   text-align: left;
 }
@@ -1714,30 +1247,10 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
 }
 
 #uyrgwnrzys .gt_right {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_font_normal {
-  font-weight: normal;
-}
-
-#mnzkitqvft .gt_font_bold {
-  font-weight: bold;
-}
-
-#mnzkitqvft .gt_font_italic {
-  font-style: italic;
-}
-
-#mnzkitqvft .gt_super {
-  font-size: 65%;
-}
-
-#mnzkitqvft .gt_footnote_marks {
-=======
 #uyrgwnrzys .gt_font_normal {
   font-weight: normal;
 }
@@ -1755,49 +1268,34 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
 }
 
 #uyrgwnrzys .gt_footnote_marks {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_asterisk {
-=======
 #uyrgwnrzys .gt_asterisk {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   font-size: 100%;
   vertical-align: 0;
 }
 
-<<<<<<< HEAD
-#mnzkitqvft .gt_indent_1 {
+#uyrgwnrzys .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mnzkitqvft .gt_indent_2 {
+#uyrgwnrzys .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mnzkitqvft .gt_indent_3 {
+#uyrgwnrzys .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mnzkitqvft .gt_indent_4 {
+#uyrgwnrzys .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mnzkitqvft .gt_indent_5 {
+#uyrgwnrzys .gt_indent_5 {
   text-indent: 25px;
-}
-
-#mnzkitqvft .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#mnzkitqvft div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
 }
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;2.1:  <p>Assigned missingness pattern matrix.</p> </caption>
@@ -1849,113 +1347,6 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
 </div>
 </div>
 </div>
-=======
-#uyrgwnrzys .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#uyrgwnrzys .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#uyrgwnrzys .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#uyrgwnrzys .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#uyrgwnrzys .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-
-<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
-<th id="Variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Variable</th>
-<th id="Pattern" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Pattern</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">X</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">Z2</td>
-<td class="gt_row gt_right" headers="Pattern">0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">U</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_ed</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">c_gnrc_cnt</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_flu_vaccine</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">c_foot_ulcer</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_glaucoma_or_cataract</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">c_ischemic_stroke</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_h2ra</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">c_acei</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_arb</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">c_statin</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_spironolocatone</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">dem_age</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">eventtime</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">status</td>
-<td class="gt_row gt_right" headers="Pattern">1</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</figure>
-</div>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </div>
 <p>As you can see, only <span class="math inline">\(Z2\)</span> was assigned a value of 0, indicating that we will impose missing only on this covariate.</p>
 </section>
@@ -1964,28 +1355,8 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
 <p>For MAR and MNAR mechanisms, the probability of an individual <span class="math inline">\(i\)</span> to have an observed or missing <span class="math inline">\(Z2\)</span> is calculated using a <strong>weighted sum score</strong>. This calculation depends on the values of covariates which we define as predictors to impose missingness on <span class="math inline">\(Z2\)</span> as well as pre-specified weights which are manipulated by the user through a vector or matrix. To that end, predictors will be assigned a non-zero value which indicates the <strong>weight</strong> this variable receives. For example, if <span class="math inline">\(Z2 = 2\)</span> and <span class="math inline">\(U = 1\)</span>, <span class="math inline">\(Z2's\)</span> influence would be twice as large as <span class="math inline">\(U's\)</span> influence. The scale here is relative, which means that <span class="math inline">\(Z2 = 2\)</span> and <span class="math inline">\(U = 1\)</span> would be the same as <span class="math inline">\(Z2 = 0.2\)</span> and <span class="math inline">\(U = 0.8\)</span>.</p>
 <p>In this example, we assign weights of 0.2 and 0.8 to <span class="math inline">\(Z2\)</span> and <span class="math inline">\(U\)</span>, respectively, which means that <span class="math inline">\(U\)</span> has a larger weight.</p>
 <div class="cell">
-<<<<<<< HEAD
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>default_weights <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">ncol</span>(cohort))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the predictor columns with a 1 or non-zero value</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">replace</span>(default_weights, <span class="fu">c</span>(col_Z2, col_U), <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.8</span>))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">colnames</span>(cohort),</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Weights =</span> weights</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div id="tbl-weights" class="anchored">
-
-<div id="uwkqiiexoa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uwkqiiexoa table {
-=======
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>default_weights <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">ncol</span>(cohort))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the predictor columns with a 1 or non-zero value</span></span>
@@ -1997,43 +1368,26 @@ Table&nbsp;2.1: Assigned missingness pattern matrix.
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="tbl-weights" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-weights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.2: Assigned missingness weights matrix.
-</figcaption>
-<div aria-describedby="tbl-weights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
+<div id="tbl-weights" class="anchored">
+
 <div id="ilqxzipqix" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#ilqxzipqix table {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa thead, #uwkqiiexoa tbody, #uwkqiiexoa tfoot, #uwkqiiexoa tr, #uwkqiiexoa td, #uwkqiiexoa th {
-  border-style: none;
-}
-
-#uwkqiiexoa p {
-=======
 #ilqxzipqix thead, #ilqxzipqix tbody, #ilqxzipqix tfoot, #ilqxzipqix tr, #ilqxzipqix td, #ilqxzipqix th {
   border-style: none;
 }
 
 #ilqxzipqix p {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   margin: 0;
   padding: 0;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_table {
-=======
 #ilqxzipqix .gt_table {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2059,20 +1413,12 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   border-left-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_caption {
-=======
 #ilqxzipqix .gt_caption {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_title {
-=======
 #ilqxzipqix .gt_title {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2084,11 +1430,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   border-bottom-width: 0;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_subtitle {
-=======
 #ilqxzipqix .gt_subtitle {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2100,11 +1442,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   border-top-width: 0;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_heading {
-=======
 #ilqxzipqix .gt_heading {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2116,21 +1454,13 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   border-right-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_bottom_border {
-=======
 #ilqxzipqix .gt_bottom_border {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_col_headings {
-=======
 #ilqxzipqix .gt_col_headings {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2145,11 +1475,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   border-right-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_col_heading {
-=======
 #ilqxzipqix .gt_col_heading {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2169,11 +1495,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   overflow-x: hidden;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_column_spanner_outer {
-=======
 #ilqxzipqix .gt_column_spanner_outer {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2185,17 +1507,6 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   padding-right: 4px;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#uwkqiiexoa .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#uwkqiiexoa .gt_column_spanner {
-=======
 #ilqxzipqix .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
@@ -2205,7 +1516,6 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
 }
 
 #ilqxzipqix .gt_column_spanner {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2217,19 +1527,11 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   width: 100%;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#uwkqiiexoa .gt_group_heading {
-=======
 #ilqxzipqix .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
 #ilqxzipqix .gt_group_heading {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2255,11 +1557,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   text-align: left;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_empty_group_heading {
-=======
 #ilqxzipqix .gt_empty_group_heading {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2274,17 +1572,6 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   vertical-align: middle;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#uwkqiiexoa .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#uwkqiiexoa .gt_row {
-=======
 #ilqxzipqix .gt_from_md > :first-child {
   margin-top: 0;
 }
@@ -2294,7 +1581,6 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
 }
 
 #ilqxzipqix .gt_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2313,11 +1599,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   overflow-x: hidden;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_stub {
-=======
 #ilqxzipqix .gt_stub {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2330,11 +1612,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   padding-right: 5px;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_stub_row_group {
-=======
 #ilqxzipqix .gt_stub_row_group {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2348,17 +1626,6 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   vertical-align: top;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#uwkqiiexoa .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#uwkqiiexoa .gt_summary_row {
-=======
 #ilqxzipqix .gt_row_group_first td {
   border-top-width: 2px;
 }
@@ -2368,7 +1635,6 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
 }
 
 #ilqxzipqix .gt_summary_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2378,28 +1644,16 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   padding-right: 5px;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_first_summary_row {
-=======
 #ilqxzipqix .gt_first_summary_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#uwkqiiexoa .gt_last_summary_row {
-=======
 #ilqxzipqix .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
 #ilqxzipqix .gt_last_summary_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2409,11 +1663,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   border-bottom-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_grand_summary_row {
-=======
 #ilqxzipqix .gt_grand_summary_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2423,11 +1673,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   padding-right: 5px;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_first_grand_summary_row {
-=======
 #ilqxzipqix .gt_first_grand_summary_row {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2437,11 +1683,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   border-top-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_last_grand_summary_row_top {
-=======
 #ilqxzipqix .gt_last_grand_summary_row_top {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2451,19 +1693,11 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   border-bottom-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#uwkqiiexoa .gt_table_body {
-=======
 #ilqxzipqix .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
 #ilqxzipqix .gt_table_body {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2472,11 +1706,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   border-bottom-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_footnotes {
-=======
 #ilqxzipqix .gt_footnotes {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2490,11 +1720,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   border-right-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_footnote {
-=======
 #ilqxzipqix .gt_footnote {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2503,11 +1729,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   padding-right: 5px;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_sourcenotes {
-=======
 #ilqxzipqix .gt_sourcenotes {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2521,11 +1743,7 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   border-right-color: #D3D3D3;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_sourcenote {
-=======
 #ilqxzipqix .gt_sourcenote {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2533,17 +1751,6 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
   padding-right: 5px;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_left {
-  text-align: left;
-}
-
-#uwkqiiexoa .gt_center {
-  text-align: center;
-}
-
-#uwkqiiexoa .gt_right {
-=======
 #ilqxzipqix .gt_left {
   text-align: left;
 }
@@ -2553,30 +1760,10 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
 }
 
 #ilqxzipqix .gt_right {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_font_normal {
-  font-weight: normal;
-}
-
-#uwkqiiexoa .gt_font_bold {
-  font-weight: bold;
-}
-
-#uwkqiiexoa .gt_font_italic {
-  font-style: italic;
-}
-
-#uwkqiiexoa .gt_super {
-  font-size: 65%;
-}
-
-#uwkqiiexoa .gt_footnote_marks {
-=======
 #ilqxzipqix .gt_font_normal {
   font-weight: normal;
 }
@@ -2594,49 +1781,34 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
 }
 
 #ilqxzipqix .gt_footnote_marks {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_asterisk {
-=======
 #ilqxzipqix .gt_asterisk {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
   font-size: 100%;
   vertical-align: 0;
 }
 
-<<<<<<< HEAD
-#uwkqiiexoa .gt_indent_1 {
+#ilqxzipqix .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uwkqiiexoa .gt_indent_2 {
+#ilqxzipqix .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uwkqiiexoa .gt_indent_3 {
+#ilqxzipqix .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uwkqiiexoa .gt_indent_4 {
+#ilqxzipqix .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uwkqiiexoa .gt_indent_5 {
+#ilqxzipqix .gt_indent_5 {
   text-indent: 25px;
-}
-
-#uwkqiiexoa .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#uwkqiiexoa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
 }
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;2.2:  <p>Assigned missingness weights matrix.</p> </caption>
@@ -2688,113 +1860,6 @@ Table&nbsp;2.2: Assigned missingness weights matrix.
 </div>
 </div>
 </div>
-=======
-#ilqxzipqix .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#ilqxzipqix .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#ilqxzipqix .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#ilqxzipqix .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#ilqxzipqix .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-
-<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
-<th id="Variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Variable</th>
-<th id="Weights" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Weights</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">X</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">Z2</td>
-<td class="gt_row gt_right" headers="Weights">0.2</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">U</td>
-<td class="gt_row gt_right" headers="Weights">0.8</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_ed</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">c_gnrc_cnt</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_flu_vaccine</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">c_foot_ulcer</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_glaucoma_or_cataract</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">c_ischemic_stroke</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_h2ra</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">c_acei</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_arb</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">c_statin</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">c_spironolocatone</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">dem_age</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Variable">eventtime</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Variable">status</td>
-<td class="gt_row gt_right" headers="Weights">0.0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</figure>
-</div>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </div>
 </section>
 <section id="step-3-computing-a-scaled-weighted-sum-score-wss" class="level2" data-number="2.4">
@@ -2817,50 +1882,8 @@ wss_i = w_{k,1} \cdot y_{1,i} + w_{k,2} \cdot y_{2,i} + ... + w_{k,m} \cdot y_{m
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="discrete-probabilities-based-on-continuous-weighted-sum-score-quantiles"><span class="header-section-number">2.5.1</span> Discrete probabilities based on continuous weighted sum score quantiles</h3>
 <p>An alternative to using the <code>ampute()</code> default different logistic probability distributions to map the weighted sum scores to a missingness probablity is to use <strong>discrete probabilities</strong> as described in <a href="https://repub.eur.nl/pub/19790/990408_BRAND,%20Jacob%20Pieter%20Laurens.pdf">Brand (1999, pp.&nbsp;110-113)</a>. The weighted sum scores of all patients are divided over a certain number of equally sized groups, or quantiles. <strong>An odds value defines the relative probability of each quantile group of becoming incomplete</strong>. In the following example, the weighted sum scores are divided over 4 groups/quantile with the highest quantile having a four-fold odds of having a missing value for <span class="math inline">\(Z2\)</span>.</p>
 <div class="cell">
-<<<<<<< HEAD
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the predictor columns with a 1 or non-zero value</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>odds <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data_miss <span class="ot">&lt;-</span> mice<span class="sc">::</span><span class="fu">ampute</span>(</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> cohort,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop =</span> <span class="fl">0.5</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mech =</span> <span class="st">"MAR"</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">patterns =</span> pattern,</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> weights,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">bycases =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cont =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">odds =</span> odds</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> cohort <span class="sc">|&gt;</span> </span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wss =</span> <span class="fu">unlist</span>(data_miss<span class="sc">$</span>scores)) <span class="sc">|&gt;</span> </span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">quantile =</span> <span class="fu">ntile</span>(<span class="at">x =</span> wss, <span class="at">n =</span> <span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">isNA =</span> <span class="fu">is.na</span>(data_miss<span class="sc">$</span>amp<span class="sc">$</span>Z2))</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>quantile <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(wss, <span class="fu">aes</span>(<span class="at">x =</span> wss, <span class="at">y =</span> quantile, <span class="at">color =</span> <span class="fu">factor</span>(isNA))) <span class="sc">+</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Standardized weighted sum score (wss)"</span>, </span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Quantile"</span>,</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Is NA"</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>quantile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div id="fig-odds1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02_missingness_generation_files/figure-html/fig-odds1-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.1: Imposed missingness based on scaled weighted sum score and corresponding quantile membership.</figcaption>
-=======
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the predictor columns with a 1 or non-zero value</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>odds <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2895,21 +1918,17 @@ wss_i = w_{k,1} \cdot y_{1,i} + w_{k,2} \cdot y_{2,i} + ... + w_{k,m} \cdot y_{m
 <span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>quantile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-odds1" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-odds1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02_missingness_generation_files/figure-html/fig-odds1-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-odds1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Imposed missingness based on scaled weighted sum score and corresponding quantile membership.
-</figcaption>
+<div id="fig-odds1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="02_missingness_generation_files/figure-html/fig-odds1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;2.1: Imposed missingness based on scaled weighted sum score and corresponding quantile membership.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>odds_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  isNA <span class="sc">~</span> wss,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wss,</span>
@@ -2933,46 +1952,6 @@ Figure&nbsp;2.1: Imposed missingness based on scaled weighted sum score and corr
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>probability</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-odds2" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-odds2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02_missingness_generation_files/figure-html/fig-odds2-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-odds2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: Imposed missingness based on scaled weighted sum score and corresponding missingness probability.
-</figcaption>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<<<<<<< HEAD
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>odds_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  isNA <span class="sc">~</span> wss,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wss,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="st">"binomial"</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> wss <span class="sc">|&gt;</span> </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">probabilities =</span> <span class="fu">fitted</span>(odds_fit))</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>probability <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(wss, <span class="fu">aes</span>(<span class="at">x =</span> wss, <span class="at">y =</span> probabilities, <span class="at">color =</span> <span class="fu">factor</span>(isNA))) <span class="sc">+</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Standardized weighted sum score (wss)"</span>, </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability"</span>,</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Is NA"</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>probability</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
 <div id="fig-odds2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02_missingness_generation_files/figure-html/fig-odds2-1.png" class="img-fluid figure-img" width="672"></p>
@@ -2984,12 +1963,7 @@ Figure&nbsp;2.2: Imposed missingness based on scaled weighted sum score and corr
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-=======
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -3000,36 +1974,15 @@ Attaching package: 'cowplot'</code></pre>
 
     theme_map</code></pre>
 </div>
-<<<<<<< HEAD
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:gt':
-
-    as_gtable</code></pre>
-</div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(quantile, probability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(quantile, probability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-odds3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02_missingness_generation_files/figure-html/fig-odds3-1.png" class="img-fluid figure-img" width="768"></p>
 <figcaption class="figure-caption">Figure&nbsp;2.3: Combined figures.</figcaption>
-=======
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(quantile, probability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div id="fig-odds3" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-odds3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02_missingness_generation_files/figure-html/fig-odds3-1.png" class="img-fluid figure-img" width="768">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-odds3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.3: Combined figures.
-</figcaption>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </figure>
 </div>
 </div>
@@ -3038,31 +1991,18 @@ Figure&nbsp;2.3: Combined figures.
 </section>
 <section id="session-info" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="session-info"><span class="header-section-number">2.6</span> Session info</h2>
-<<<<<<< HEAD
-<p>Script runtime: 0.04 minutes.</p>
-=======
-<p>Script runtime: 0.09 minutes.</p>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
+<p>Script runtime: 0.05 minutes.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Loaded packages</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Session info</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Repositories</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
-<<<<<<< HEAD
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">subset</span>(<span class="fu">data.frame</span>(sessioninfo<span class="sc">::</span><span class="fu">package_info</span>()), attached<span class="sc">==</span><span class="cn">TRUE</span>, <span class="fu">c</span>(package, loadedversion)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-=======
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">subset</span>(<span class="fu">data.frame</span>(sessioninfo<span class="sc">::</span><span class="fu">package_info</span>()), attached<span class="sc">==</span><span class="cn">TRUE</span>, <span class="fu">c</span>(package, loadedversion)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
+<table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 22%">
 <col style="width: 16%">
@@ -3079,11 +2019,7 @@ Figure&nbsp;2.3: Combined figures.
 <tr class="odd">
 <td style="text-align: center;"><strong>arrow</strong></td>
 <td style="text-align: center;">arrow</td>
-<<<<<<< HEAD
-<td style="text-align: center;">17.0.0.1</td>
-=======
 <td style="text-align: center;">14.0.0.2</td>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </tr>
 <tr class="even">
 <td style="text-align: center;"><strong>cowplot</strong></td>
@@ -3098,20 +2034,12 @@ Figure&nbsp;2.3: Combined figures.
 <tr class="even">
 <td style="text-align: center;"><strong>ggplot2</strong></td>
 <td style="text-align: center;">ggplot2</td>
-<<<<<<< HEAD
-<td style="text-align: center;">3.5.1</td>
-=======
 <td style="text-align: center;">3.4.4</td>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><strong>ggsurvfit</strong></td>
 <td style="text-align: center;">ggsurvfit</td>
-<<<<<<< HEAD
-<td style="text-align: center;">1.1.0</td>
-=======
 <td style="text-align: center;">1.0.0</td>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </tr>
 <tr class="even">
 <td style="text-align: center;"><strong>ggthemes</strong></td>
@@ -3121,11 +2049,7 @@ Figure&nbsp;2.3: Combined figures.
 <tr class="odd">
 <td style="text-align: center;"><strong>gt</strong></td>
 <td style="text-align: center;">gt</td>
-<<<<<<< HEAD
-<td style="text-align: center;">0.11.1</td>
-=======
 <td style="text-align: center;">0.10.1</td>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </tr>
 <tr class="even">
 <td style="text-align: center;"><strong>gtools</strong></td>
@@ -3135,11 +2059,7 @@ Figure&nbsp;2.3: Combined figures.
 <tr class="odd">
 <td style="text-align: center;"><strong>gtsummary</strong></td>
 <td style="text-align: center;">gtsummary</td>
-<<<<<<< HEAD
-<td style="text-align: center;">2.0.3</td>
-=======
 <td style="text-align: center;">1.7.2</td>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </tr>
 <tr class="even">
 <td style="text-align: center;"><strong>here</strong></td>
@@ -3154,20 +2074,12 @@ Figure&nbsp;2.3: Combined figures.
 <tr class="even">
 <td style="text-align: center;"><strong>survival</strong></td>
 <td style="text-align: center;">survival</td>
-<<<<<<< HEAD
-<td style="text-align: center;">3.7-0</td>
-=======
 <td style="text-align: center;">3.5-8</td>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><strong>tictoc</strong></td>
 <td style="text-align: center;">tictoc</td>
-<<<<<<< HEAD
-<td style="text-align: center;">1.2.1</td>
-=======
 <td style="text-align: center;">1.2</td>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </tr>
 </tbody>
 </table>
@@ -3176,54 +2088,30 @@ Figure&nbsp;2.3: Combined figures.
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<<<<<<< HEAD
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">sessionInfo</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">sessionInfo</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><strong>R version 4.4.0 (2024-04-24)</strong></p>
 <p><strong>Platform:</strong> aarch64-apple-darwin20</p>
 <p><strong>locale:</strong> en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8</p>
 <p><strong>attached base packages:</strong> <em>stats</em>, <em>graphics</em>, <em>grDevices</em>, <em>datasets</em>, <em>utils</em>, <em>methods</em> and <em>base</em></p>
-<p><strong>other attached packages:</strong> <em>cowplot(v.1.1.3)</em>, <em>tictoc(v.1.2.1)</em>, <em>mice(v.3.16.0)</em>, <em>gtools(v.3.9.5)</em>, <em>ggthemes(v.5.1.0)</em>, <em>gtsummary(v.2.0.3)</em>, <em>gt(v.0.11.1)</em>, <em>ggplot2(v.3.5.1)</em>, <em>ggsurvfit(v.1.1.0)</em>, <em>survival(v.3.7-0)</em>, <em>dplyr(v.1.1.4)</em>, <em>arrow(v.17.0.0.1)</em> and <em>here(v.1.0.1)</em></p>
-<p><strong>loaded via a namespace (and not attached):</strong> <em>gtable(v.0.3.5)</em>, <em>shape(v.1.4.6.1)</em>, <em>xfun(v.0.48)</em>, <em>htmlwidgets(v.1.6.4)</em>, <em>lattice(v.0.22-6)</em>, <em>simsurv(v.1.0.0)</em>, <em>vctrs(v.0.6.5)</em>, <em>tools(v.4.4.0)</em>, <em>generics(v.0.1.3)</em>, <em>tibble(v.3.2.1)</em>, <em>fansi(v.1.0.6)</em>, <em>pan(v.1.9)</em>, <em>pkgconfig(v.2.0.3)</em>, <em>jomo(v.2.7-6)</em>, <em>Matrix(v.1.7-0)</em>, <em>assertthat(v.0.2.1)</em>, <em>lifecycle(v.1.0.4)</em>, <em>farver(v.2.1.2)</em>, <em>compiler(v.4.4.0)</em>, <em>stringr(v.1.5.1)</em>, <em>munsell(v.0.5.1)</em>, <em>codetools(v.0.2-20)</em>, <em>sass(v.0.4.9)</em>, <em>htmltools(v.0.5.8.1)</em>, <em>yaml(v.2.3.10)</em>, <em>glmnet(v.4.1-8)</em>, <em>nloptr(v.2.1.1)</em>, <em>pillar(v.1.9.0)</em>, <em>tidyr(v.1.3.1)</em>, <em>MASS(v.7.3-61)</em>, <em>sessioninfo(v.1.2.2)</em>, <em>iterators(v.1.0.14)</em>, <em>rpart(v.4.1.23)</em>, <em>boot(v.1.3-31)</em>, <em>foreach(v.1.5.2)</em>, <em>mitml(v.0.4-5)</em>, <em>nlme(v.3.1-166)</em>, <em>commonmark(v.1.9.2)</em>, <em>tidyselect(v.1.2.1)</em>, <em>digest(v.0.6.37)</em>, <em>stringi(v.1.8.4)</em>, <em>pander(v.0.6.5)</em>, <em>purrr(v.1.0.2)</em>, <em>labeling(v.0.4.3)</em>, <em>splines(v.4.4.0)</em>, <em>rprojroot(v.2.0.4)</em>, <em>fastmap(v.1.2.0)</em>, <em>grid(v.4.4.0)</em>, <em>colorspace(v.2.1-1)</em>, <em>cli(v.3.6.3)</em>, <em>magrittr(v.2.0.3)</em>, <em>base64enc(v.0.1-3)</em>, <em>cards(v.0.3.0)</em>, <em>utf8(v.1.2.4)</em>, <em>broom(v.1.0.7)</em>, <em>withr(v.3.0.1)</em>, <em>scales(v.1.3.0)</em>, <em>backports(v.1.5.0)</em>, <em>bit64(v.4.5.2)</em>, <em>rmarkdown(v.2.28)</em>, <em>nnet(v.7.3-19)</em>, <em>bit(v.4.5.0)</em>, <em>lme4(v.1.1-35.5)</em>, <em>evaluate(v.1.0.1)</em>, <em>knitr(v.1.48)</em>, <em>markdown(v.1.13)</em>, <em>rlang(v.1.1.4)</em>, <em>Rcpp(v.1.0.13)</em>, <em>glue(v.1.8.0)</em>, <em>xml2(v.1.3.6)</em>, <em>renv(v.1.0.3)</em>, <em>minqa(v.1.2.8)</em>, <em>jsonlite(v.1.8.9)</em> and <em>R6(v.2.5.1)</em></p>
-=======
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">sessionInfo</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><strong>R version 4.4.0 (2024-04-24)</strong></p>
-<p><strong>Platform:</strong> x86_64-pc-linux-gnu</p>
-<p><strong>locale:</strong> <em>LC_CTYPE=C.UTF-8</em>, <em>LC_NUMERIC=C</em>, <em>LC_TIME=C.UTF-8</em>, <em>LC_COLLATE=C.UTF-8</em>, <em>LC_MONETARY=C.UTF-8</em>, <em>LC_MESSAGES=C.UTF-8</em>, <em>LC_PAPER=C.UTF-8</em>, <em>LC_NAME=C</em>, <em>LC_ADDRESS=C</em>, <em>LC_TELEPHONE=C</em>, <em>LC_MEASUREMENT=C.UTF-8</em> and <em>LC_IDENTIFICATION=C</em></p>
-<p><strong>attached base packages:</strong> <em>stats</em>, <em>graphics</em>, <em>grDevices</em>, <em>datasets</em>, <em>utils</em>, <em>methods</em> and <em>base</em></p>
 <p><strong>other attached packages:</strong> <em>cowplot(v.1.1.3)</em>, <em>tictoc(v.1.2)</em>, <em>mice(v.3.16.0)</em>, <em>gtools(v.3.9.5)</em>, <em>ggthemes(v.5.1.0)</em>, <em>gtsummary(v.1.7.2)</em>, <em>gt(v.0.10.1)</em>, <em>ggplot2(v.3.4.4)</em>, <em>ggsurvfit(v.1.0.0)</em>, <em>survival(v.3.5-8)</em>, <em>dplyr(v.1.1.4)</em>, <em>arrow(v.14.0.0.2)</em> and <em>here(v.1.0.1)</em></p>
-<p><strong>loaded via a namespace (and not attached):</strong> <em>gtable(v.0.3.4)</em>, <em>shape(v.1.4.6)</em>, <em>xfun(v.0.41)</em>, <em>htmlwidgets(v.1.6.4)</em>, <em>lattice(v.0.22-5)</em>, <em>simsurv(v.1.0.0)</em>, <em>vctrs(v.0.6.5)</em>, <em>tools(v.4.4.0)</em>, <em>generics(v.0.1.3)</em>, <em>tibble(v.3.2.1)</em>, <em>fansi(v.1.0.6)</em>, <em>pan(v.1.9)</em>, <em>pkgconfig(v.2.0.3)</em>, <em>jomo(v.2.7-6)</em>, <em>Matrix(v.1.6-4)</em>, <em>assertthat(v.0.2.1)</em>, <em>lifecycle(v.1.0.4)</em>, <em>farver(v.2.1.1)</em>, <em>compiler(v.4.4.0)</em>, <em>stringr(v.1.5.1)</em>, <em>munsell(v.0.5.0)</em>, <em>codetools(v.0.2-19)</em>, <em>sass(v.0.4.8)</em>, <em>htmltools(v.0.5.7)</em>, <em>yaml(v.2.3.8)</em>, <em>glmnet(v.4.1-8)</em>, <em>nloptr(v.2.0.3)</em>, <em>pillar(v.1.9.0)</em>, <em>tidyr(v.1.3.1)</em>, <em>MASS(v.7.3-60)</em>, <em>broom.helpers(v.1.14.0)</em>, <em>sessioninfo(v.1.2.2)</em>, <em>iterators(v.1.0.14)</em>, <em>rpart(v.4.1.23)</em>, <em>boot(v.1.3-28.1)</em>, <em>foreach(v.1.5.2)</em>, <em>mitml(v.0.4-5)</em>, <em>nlme(v.3.1-164)</em>, <em>commonmark(v.1.9.1)</em>, <em>tidyselect(v.1.2.0)</em>, <em>digest(v.0.6.33)</em>, <em>stringi(v.1.8.3)</em>, <em>pander(v.0.6.5)</em>, <em>purrr(v.1.0.2)</em>, <em>labeling(v.0.4.3)</em>, <em>forcats(v.1.0.0)</em>, <em>splines(v.4.4.0)</em>, <em>rprojroot(v.2.0.4)</em>, <em>fastmap(v.1.1.1)</em>, <em>grid(v.4.4.0)</em>, <em>colorspace(v.2.1-0)</em>, <em>cli(v.3.6.2)</em>, <em>magrittr(v.2.0.3)</em>, <em>utf8(v.1.2.4)</em>, <em>broom(v.1.0.5)</em>, <em>withr(v.3.0.0)</em>, <em>scales(v.1.3.0)</em>, <em>backports(v.1.4.1)</em>, <em>bit64(v.4.0.5)</em>, <em>rmarkdown(v.2.28)</em>, <em>nnet(v.7.3-19)</em>, <em>bit(v.4.0.5)</em>, <em>lme4(v.1.1-35.1)</em>, <em>evaluate(v.0.23)</em>, <em>knitr(v.1.45)</em>, <em>markdown(v.1.12)</em>, <em>rlang(v.1.1.2)</em>, <em>Rcpp(v.1.0.12)</em>, <em>glue(v.1.6.2)</em>, <em>xml2(v.1.3.6)</em>, <em>renv(v.1.0.3)</em>, <em>minqa(v.1.2.6)</em>, <em>jsonlite(v.1.8.8)</em> and <em>R6(v.2.5.1)</em></p>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
+<p><strong>loaded via a namespace (and not attached):</strong> <em>gtable(v.0.3.4)</em>, <em>shape(v.1.4.6)</em>, <em>xfun(v.0.41)</em>, <em>htmlwidgets(v.1.6.4)</em>, <em>lattice(v.0.22-5)</em>, <em>simsurv(v.1.0.0)</em>, <em>vctrs(v.0.6.5)</em>, <em>tools(v.4.4.0)</em>, <em>generics(v.0.1.3)</em>, <em>tibble(v.3.2.1)</em>, <em>fansi(v.1.0.6)</em>, <em>pan(v.1.9)</em>, <em>pkgconfig(v.2.0.3)</em>, <em>jomo(v.2.7-6)</em>, <em>Matrix(v.1.6-4)</em>, <em>assertthat(v.0.2.1)</em>, <em>lifecycle(v.1.0.4)</em>, <em>farver(v.2.1.1)</em>, <em>compiler(v.4.4.0)</em>, <em>stringr(v.1.5.1)</em>, <em>munsell(v.0.5.0)</em>, <em>codetools(v.0.2-19)</em>, <em>sass(v.0.4.8)</em>, <em>htmltools(v.0.5.7)</em>, <em>yaml(v.2.3.8)</em>, <em>glmnet(v.4.1-8)</em>, <em>nloptr(v.2.0.3)</em>, <em>pillar(v.1.9.0)</em>, <em>tidyr(v.1.3.1)</em>, <em>MASS(v.7.3-60)</em>, <em>broom.helpers(v.1.14.0)</em>, <em>sessioninfo(v.1.2.2)</em>, <em>iterators(v.1.0.14)</em>, <em>rpart(v.4.1.23)</em>, <em>boot(v.1.3-28.1)</em>, <em>foreach(v.1.5.2)</em>, <em>mitml(v.0.4-5)</em>, <em>nlme(v.3.1-164)</em>, <em>commonmark(v.1.9.1)</em>, <em>tidyselect(v.1.2.0)</em>, <em>digest(v.0.6.33)</em>, <em>stringi(v.1.8.3)</em>, <em>pander(v.0.6.5)</em>, <em>purrr(v.1.0.2)</em>, <em>labeling(v.0.4.3)</em>, <em>forcats(v.1.0.0)</em>, <em>splines(v.4.4.0)</em>, <em>rprojroot(v.2.0.4)</em>, <em>fastmap(v.1.1.1)</em>, <em>grid(v.4.4.0)</em>, <em>colorspace(v.2.1-0)</em>, <em>cli(v.3.6.2)</em>, <em>magrittr(v.2.0.3)</em>, <em>utf8(v.1.2.4)</em>, <em>broom(v.1.0.5)</em>, <em>withr(v.3.0.0)</em>, <em>scales(v.1.3.0)</em>, <em>backports(v.1.4.1)</em>, <em>bit64(v.4.0.5)</em>, <em>rmarkdown(v.2.28)</em>, <em>nnet(v.7.3-19)</em>, <em>bit(v.4.0.5)</em>, <em>lme4(v.1.1-35.1)</em>, <em>evaluate(v.0.23)</em>, <em>knitr(v.1.45)</em>, <em>markdown(v.1.12)</em>, <em>rlang(v.1.1.2)</em>, <em>Rcpp(v.1.0.12)</em>, <em>glue(v.1.6.2)</em>, <em>xml2(v.1.3.6)</em>, <em>renv(v.1.0.11)</em>, <em>minqa(v.1.2.6)</em>, <em>jsonlite(v.1.8.8)</em> and <em>R6(v.2.5.1)</em></p>
 </div>
 </div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div class="cell">
-<<<<<<< HEAD
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">options</span>(<span class="st">'repos'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-=======
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pander</span>(<span class="fu">options</span>(<span class="st">'repos'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 </details>
 <div class="cell-output-display">
 <ul>
 <li><p><strong>repos</strong>:</p>
-<<<<<<< HEAD
 <table class="table table-sm table-striped small">
-=======
-<table class="caption-top table table-sm table-striped small">
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 <colgroup>
 <col style="width: 63%">
 </colgroup>
@@ -3285,7 +2173,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-<<<<<<< HEAD
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     text: function(trigger) {
       const codeEl = trigger.previousElementSibling.cloneNode(true);
@@ -3298,9 +2185,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   });
   clipboard.on('success', function(e) {
-=======
-  const onCopySuccess = function(e) {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -3332,65 +2216,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-<<<<<<< HEAD
   });
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
       content: contentFn,
-=======
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/drugepi\.gitlab-pages\.partners\.org\/bias_simulation_missing_data");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-          // default icon
-          link.classList.add("external");
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3400,22 +2230,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-<<<<<<< HEAD
       placement: 'bottom-start'
     };
-=======
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -3427,134 +2243,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-<<<<<<< HEAD
       return note.innerHTML;
-=======
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
     });
   }
       let selectedAnnoteEl;
@@ -3598,10 +2287,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-<<<<<<< HEAD
-=======
-            div.style.left = 0;
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -3627,35 +2312,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-<<<<<<< HEAD
-=======
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -3713,7 +2369,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-<<<<<<< HEAD
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var filterRegex = new RegExp("https:\/\/drugepi\.gitlab-pages\.partners\.org\/bias_simulation_missing_data");
     var isInternal = (href) => {
@@ -3730,26 +2385,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           link.classList.add("external");
       }
     }
-=======
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
 });
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-<<<<<<< HEAD
       <a href="../scripts/01_data_generation.html" class="pagination-link">
-=======
-      <a href="../scripts/01_data_generation.html" class="pagination-link" aria-label="Data generation">
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data generation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-<<<<<<< HEAD
       <a href="../scripts/03_run_simulation.html" class="pagination-link">
-=======
-      <a href="../scripts/03_run_simulation.html" class="pagination-link" aria-label="Simple de novo simulation">
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Simple de novo simulation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -3758,9 +2403,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<<<<<<< HEAD
 </body></html>
-=======
-
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://gitlab-scm.partners.org/drugepi/bias_simulation_missing_data/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
->>>>>>> e5ae9b750757884c993beb7ee13a84fa9d2b8dbc
