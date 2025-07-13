@@ -1,0 +1,17 @@
+{
+    "restore_source_documents": false,
+    "save_workspace": "never",
+    "load_workspace": false,
+    "always_save_history": false,
+    "restore_last_project": false,
+    "editor_theme": "Merbivore",
+    "jobs_tab_visibility": "shown",
+    "show_hidden_files": true,
+    "show_margin": false,
+    "insert_native_pipe_operator": true,
+    "rmd_viewer_type": "pane",
+    "font_size_points": 11,
+    "rainbow_parentheses": true,
+    "copilot_enabled": true,
+    "copilot_indexing_enabled": true
+}

@@ -1,0 +1,43 @@
+[
+    {
+      "key": "cmd+Shift+m",
+      "command": "type",
+      "args": { "text": " |> " },
+      "when": "editorLangId == 'r' || editorTextFocus && editorLangId == 'quarto' || activeCustomEditorId == 'quarto.visualEditor'"
+    },
+    {
+      "key": "Alt+-",
+      "command": "type",
+      "args": { "text": " <- " },
+      "when": "editorLangId == 'r' || editorTextFocus && editorLangId == 'quarto' || activeCustomEditorId == 'quarto.visualEditor'"
+    },
+    {
+      "key": "cmd+Shift+m",
+      "command": "type",
+      "args": { "text": " |> " },
+      "when": "editorTextFocus && editorLangId == rmd"
+    },
+    {
+      "key": "Alt+-",
+      "command": "type",
+      "args": { "text": " <- " },
+      "when": "editorTextFocus && editorLangId == rmd"
+    },
+    {
+      "key": "cmd+Shift+m",
+      "command": "workbench.action.terminal.sendSequence",
+      "args": { "text": " |> " },
+      "when": "terminalFocus"
+    },
+    {
+      "key": "Alt+-",
+      "command": "workbench.action.terminal.sendSequence",
+      "args": { "text": " <- " },
+      "when": "terminalFocus"
+    },
+    {
+      "key": "alt+l",
+      "command": "workbench.action.terminal.clear",
+      "when": "terminalFocus"
+    }
+]
